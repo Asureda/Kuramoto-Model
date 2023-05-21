@@ -1,0 +1,2646 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     96086,       2637]
+NotebookOptionsPosition[     90976,       2499]
+NotebookOutlinePosition[     91603,       2521]
+CellTagsIndexPosition[     91560,       2518]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Linear Stability Analysis of the Kuramoto model with noise", "Title",
+ CellChangeTimes->{{3.804349358136987*^9, 3.804349395700363*^9}}],
+
+Cell["Alexandre Sureda Croguennoc ", "Author",
+ CellChangeTimes->{{3.804349488770813*^9, 3.8043494957331967`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "   ",
+ StyleBox["Kuramoto model with noise ", "Subchapter"]
+}], "Chapter",
+ CellChangeTimes->{{3.8043494150606537`*^9, 3.80434943089557*^9}, {
+  3.804349604108413*^9, 3.8043496063773446`*^9}, {3.8043641709420834`*^9, 
+  3.804364193444929*^9}, {3.804364279775031*^9, 3.804364280216855*^9}}],
+
+Cell["The Kuramoto model defined as", "Text",
+ CellChangeTimes->{{3.8043514351676683`*^9, 3.804351447086795*^9}, 
+   3.8043523834446344`*^9, {3.8043534916898813`*^9, 3.804353492725119*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubscriptBox[
+     RowBox[{"\[Theta]", "'"}], "i"], 
+    RowBox[{"(", "t", ")"}]}], "  ", "=", " ", 
+   RowBox[{
+    SubscriptBox[
+     RowBox[{"\[Omega]", " "}], "i"], "+", "  ", 
+    RowBox[{"K", " ", "r", " ", "sin", " ", 
+     RowBox[{"(", " ", 
+      RowBox[{"\[Psi]", " ", "-", " ", 
+       SubscriptBox["\[Theta]", "i"]}], " ", ")"}], "      ", 
+     RowBox[{"(", "1", ")"}]}]}]}], TraditionalForm]], "Input",
+ CellChangeTimes->{{3.804351259541288*^9, 3.804351280595022*^9}, {
+   3.804351334320363*^9, 3.8043513459352727`*^9}, {3.804351397004711*^9, 
+   3.804351426675395*^9}, {3.8043515346466584`*^9, 3.804351539087783*^9}, {
+   3.8043516139954777`*^9, 3.8043516544284067`*^9}, {3.804352619728465*^9, 
+   3.804352670378029*^9}, {3.80435272749729*^9, 3.8043527341225777`*^9}, {
+   3.8043535183176403`*^9, 3.8043535260818787`*^9}, {3.8043567894465013`*^9, 
+   3.804356791695531*^9}, {3.8043677037019014`*^9, 3.804367709441559*^9}, 
+   3.804367809997632*^9, {3.8043687060681086`*^9, 3.804368711396858*^9}}],
+
+Cell["\<\
+
+Adding noise to the model gives \
+\>", "Text",
+ CellChangeTimes->{{3.8043535066648045`*^9, 3.8043535123725395`*^9}, 
+   3.804367548032163*^9}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubscriptBox[
+     RowBox[{"\[Theta]", "'"}], "i"], 
+    RowBox[{"(", "t", ")"}]}], "  ", "=", " ", 
+   RowBox[{
+    SubscriptBox[
+     RowBox[{"\[Omega]", " "}], "i"], "+", " ", 
+    RowBox[{"\[Zeta]", " ", 
+     RowBox[{"(", " ", "t", " ", ")"}]}], " ", "+", " ", 
+    RowBox[{"K", " ", "r", " ", "sin", " ", 
+     RowBox[{"(", " ", 
+      RowBox[{"\[Psi]", " ", "-", " ", 
+       SubscriptBox["\[Theta]", "i"]}], " ", ")"}], "       ", 
+     RowBox[{"(", "2", ")"}]}]}]}], TraditionalForm]], "Input",
+ CellChangeTimes->{{3.8043535296792974`*^9, 3.8043535303534927`*^9}, {
+   3.804356786399681*^9, 3.8043567943094993`*^9}, {3.8043677108956275`*^9, 
+   3.804367714995663*^9}, 3.8043678083001986`*^9, 3.804368714506545*^9}],
+
+Cell["\<\
+
+Where \[Zeta]  is the white noise defined as \
+\>", "Text",
+ CellChangeTimes->{{3.8043514585371785`*^9, 3.80435149004193*^9}, 
+   3.804367552414405*^9}],
+
+Cell[BoxData[{
+ FormBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"<", "  ", 
+     RowBox[{
+      SubscriptBox["\[Zeta]", "i"], " ", 
+      RowBox[{"(", " ", "t", " ", ")"}]}], " ", ">"}], " ", "=", " ", "0"}], 
+   " "}], TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   RowBox[{"<", "  ", 
+    RowBox[{
+     SubscriptBox[
+      RowBox[{"\[Zeta]", " "}], "i"], 
+     RowBox[{"(", " ", "t", " ", ")"}], " ", 
+     SubscriptBox[
+      RowBox[{"\[Zeta]", " "}], "j"], 
+     RowBox[{"(", " ", "t", " ", ")"}]}], ">"}], " ", "=", " ", 
+   RowBox[{"2", " ", "D", " ", 
+    SubscriptBox["\[Delta]", "ij"], 
+    RowBox[{"\[Delta]", "(", 
+     RowBox[{"s", "-", "t"}], ")"}]}]}], TraditionalForm]}], "Input",
+ CellChangeTimes->{
+  3.8043515039766693`*^9, {3.8043515468629923`*^9, 3.8043515710622835`*^9}, {
+   3.8043516596563807`*^9, 3.8043517373645973`*^9}}],
+
+Cell["\<\
+
+Where D is the strength of the noise . Analogously to the Wiener process we \
+can also express the Kuramoto model with noise in terms of the evolution of a \
+density function. This type of equation is called a Fokker-Planck equation.
+\
+\>", "Text",
+ CellChangeTimes->{{3.8043496255891128`*^9, 3.8043496394588766`*^9}, {
+  3.8043496761188407`*^9, 3.8043497353687515`*^9}, {3.8043498271027327`*^9, 
+  3.8043498297725983`*^9}, {3.8043517468602*^9, 3.804351762047594*^9}, {
+  3.8043517972713995`*^9, 3.8043518599687505`*^9}, {3.8043527637982254`*^9, 
+  3.8043527659315214`*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FractionBox[
+    RowBox[{"\[PartialD]", "\[Rho]"}], 
+    RowBox[{"\[PartialD]", "t"}]], "=", "  ", 
+   RowBox[{
+    RowBox[{"D", " ", 
+     FractionBox[
+      RowBox[{" ", 
+       RowBox[{
+        SuperscriptBox["\[PartialD]", "2"], " ", "\[Rho]"}]}], 
+      RowBox[{"\[PartialD]", " ", 
+       SuperscriptBox["\[Theta]", "2"]}]]}], " ", "-", " ", 
+    RowBox[{
+     RowBox[{
+      FractionBox["\[PartialD]", 
+       RowBox[{"\[PartialD]", " ", "\[Theta]"}]], 
+      RowBox[{"[", " ", 
+       RowBox[{"\[Rho]", " ", "v"}], " ", "]"}]}], "            ", 
+     RowBox[{"(", "3", ")"}]}]}]}], TraditionalForm]], "Input",
+ CellChangeTimes->{{3.8043518730627613`*^9, 3.8043519081329803`*^9}, {
+  3.8043519489976835`*^9, 3.80435197512386*^9}, {3.8043526797101088`*^9, 
+  3.8043527230372157`*^9}, {3.8043527582809744`*^9, 3.804352758786623*^9}, {
+  3.8043535332457232`*^9, 3.8043535358388176`*^9}, {3.8043567587266474`*^9, 
+  3.804356782270688*^9}, {3.804363218833991*^9, 3.8043632239433575`*^9}, {
+  3.8043677183496943`*^9, 3.8043677449575915`*^9}, {3.804367777514488*^9, 
+  3.804367805539584*^9}, {3.8043687190494304`*^9, 3.8043687281211596`*^9}}],
+
+Cell[TextData[{
+ "\nWhere v = ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox[
+     RowBox[{"\[Theta]", "'"}], "i"], 
+    RowBox[{"(", "t", ")"}]}], TraditionalForm]],
+  CellChangeTimes->{{3.804351259541288*^9, 3.804351280595022*^9}, {
+   3.804351334320363*^9, 3.8043513459352727`*^9}, {3.804351397004711*^9, 
+   3.804351426675395*^9}, {3.8043515346466584`*^9, 3.804351539087783*^9}, {
+   3.8043516139954777`*^9, 3.8043516544284067`*^9}}],
+ " . The order parameter r can be defined as . The incoherent state is"
+}], "Text",
+ CellChangeTimes->{{3.80436778473917*^9, 3.8043677883585014`*^9}, {
+  3.8043678194842615`*^9, 3.8043678464332027`*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"\[Rho]", "(", 
+    RowBox[{"\[Theta]", ",", "t", ",", "\[Omega]"}], ")"}], "  ", "=", " ", 
+   RowBox[{
+    FractionBox["1", 
+     RowBox[{"2", " ", "\[Pi]"}]], "                                  ", 
+    RowBox[{"(", "4", ")"}]}]}], TraditionalForm]], "Input",
+ CellChangeTimes->{{3.804367793594494*^9, 3.804367800825197*^9}, {
+  3.8043687301457253`*^9, 3.8043687412300835`*^9}}],
+
+Cell["", "Text",
+ CellChangeTimes->{{3.804351857091448*^9, 3.804351861851712*^9}, {
+   3.8043519248781805`*^9, 3.8043519389864583`*^9}, {3.8043521061853657`*^9, 
+   3.8043521250419436`*^9}, 3.8043522746908245`*^9, 3.804352769229699*^9, 
+   3.804360441907135*^9, {3.8043678320676136`*^9, 3.804367833095886*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"r", " ", 
+    SuperscriptBox["\[ExponentialE]", 
+     RowBox[{"i", " ", "\[Psi]"}]]}], "  ", "=", " ", 
+   RowBox[{
+    SubsuperscriptBox["\[Integral]", "0", 
+     RowBox[{"2", " ", "\[Pi]"}]], 
+    RowBox[{
+     SubsuperscriptBox["\[Integral]", 
+      RowBox[{"-", "\[Infinity]"}], "\[Infinity]"], 
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"i", " ", "\[Theta]"}]], 
+      RowBox[{"\[Rho]", "(", 
+       RowBox[{"\[Theta]", ",", "t", ",", "\[Omega]"}], ")"}], " ", 
+      RowBox[{"g", "(", "\[Omega]", ")"}], 
+      RowBox[{"\[DifferentialD]", "\[Omega]"}], 
+      RowBox[{"\[DifferentialD]", "\[Theta]"}], "                 ", 
+      RowBox[{"(", "5", ")"}]}]}]}]}], TraditionalForm]], "Input",
+ CellChangeTimes->{{3.8043521438457065`*^9, 3.8043522207669735`*^9}, {
+  3.804352250977192*^9, 3.804352255291684*^9}, {3.8043527392279243`*^9, 
+  3.8043527551264114`*^9}, {3.804353538449808*^9, 3.804353538959444*^9}, {
+  3.804356750743037*^9, 3.804356798805476*^9}, {3.80436781330678*^9, 
+  3.8043678167475786`*^9}, {3.8043687453011985`*^9, 3.804368746474061*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["\n    Adding perturbation ", "Subchapter"]], \
+"Subtitle",
+ CellChangeTimes->{{3.804364242658284*^9, 3.8043642773953943`*^9}, {
+  3.8043675699315977`*^9, 3.804367571276968*^9}}],
+
+Cell["\<\
+ 
+We add a small perturbation to he incoherent state \[Rho] (\[Theta], t, \
+\[Omega] ) = 1/2\[Pi] .\
+\>", "Text",
+ CellChangeTimes->{
+  3.8043521319395013`*^9, 3.8043522714773765`*^9, {3.8043527710917187`*^9, 
+   3.8043527720072713`*^9}, 3.804360440579683*^9}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"\[Rho]", "(", 
+    RowBox[{"\[Theta]", ",", "t", ",", "\[Omega]"}], ")"}], "  ", "=", " ", 
+   RowBox[{
+    RowBox[{"\[Epsilon]", " ", 
+     RowBox[{"\[Eta]", "(", 
+      RowBox[{"\[Theta]", ",", "t", ",", "\[Omega]"}], ")"}]}], "+", 
+    RowBox[{
+     FractionBox["1", 
+      RowBox[{"2", " ", "\[Pi]"}]], "                  ", 
+     RowBox[{"(", "6", ")"}]}]}]}], TraditionalForm]], "Input",
+ CellChangeTimes->{{3.804349851889455*^9, 3.804349972459421*^9}, {
+  3.804350012726907*^9, 3.8043501007882705`*^9}, {3.804352787067042*^9, 
+  3.8043527967341948`*^9}, {3.8043535405452037`*^9, 3.8043535422755766`*^9}, {
+  3.804356801893254*^9, 3.80435680422997*^9}, {3.8043678510179396`*^9, 
+  3.8043678561143126`*^9}, {3.8043687513490243`*^9, 3.8043687535641465`*^9}}],
+
+Cell[TextData[{
+ "\nWhere the strength is set ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"\[Epsilon]", " ", 
+     RowBox[{"<<", " ", "1"}]}], ",", " ", 
+    RowBox[{
+    "the", " ", "arbitrary", " ", "function", " ", "must", " ", "obey", " ", 
+     "for", " ", "normalization", " ", "of", " ", "\[Rho]"}]}], 
+   TraditionalForm]], "Text",
+  FormatType->"TraditionalForm"]
+}], "Text",
+ CellChangeTimes->{{3.8043502721387367`*^9, 3.8043504373159533`*^9}, {
+   3.804352773701741*^9, 3.8043527745225534`*^9}, 3.8043604381084185`*^9}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubsuperscriptBox["\[Integral]", "0", 
+     RowBox[{"2", " ", "\[Pi]"}]], 
+    RowBox[{
+     RowBox[{"\[Eta]", "(", 
+      RowBox[{"\[Theta]", ",", "t", ",", "\[Omega]"}], ")"}], 
+     RowBox[{"\[DifferentialD]", "\[Theta]"}]}]}], " ", "=", " ", "0"}], 
+  TraditionalForm]], "Input",
+ CellChangeTimes->{{3.804350455428485*^9, 3.804350486072542*^9}}],
+
+Cell["\<\
+
+Substitute this perturbation into the Fokker - Planck equation and find the \
+first order [O(\[Epsilon])] . Fom the Focker - Planck we have : \
+\>", "Text",
+ CellChangeTimes->{{3.8043505559427123`*^9, 3.8043506860498037`*^9}, {
+   3.804352776591016*^9, 3.8043527777459264`*^9}, 3.804360436684099*^9}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"\[Epsilon]", " ", 
+    FractionBox[
+     RowBox[{" ", 
+      RowBox[{"\[PartialD]", " ", 
+       RowBox[{"\[Eta]", "(", 
+        RowBox[{"\[Theta]", ",", "t", ",", "\[Omega]"}], ")"}]}]}], 
+     RowBox[{"\[PartialD]", " ", "t"}]]}], "=", " ", 
+   RowBox[{
+    RowBox[{"\[Epsilon]", " ", "D", " ", 
+     FractionBox[
+      RowBox[{" ", 
+       RowBox[{
+        SuperscriptBox["\[PartialD]", "2"], " ", 
+        RowBox[{"\[Eta]", "(", 
+         RowBox[{"\[Theta]", ",", "t", ",", "\[Omega]"}], ")"}]}]}], 
+      RowBox[{"\[PartialD]", " ", 
+       SuperscriptBox["\[Theta]", "2"]}]]}], " ", "-", " ", 
+    RowBox[{
+     RowBox[{
+      FractionBox["\[PartialD]", 
+       RowBox[{"\[PartialD]", " ", "\[Theta]"}]], 
+      RowBox[{"[", " ", 
+       RowBox[{
+        RowBox[{"(", " ", 
+         RowBox[{
+          FractionBox["1", 
+           RowBox[{"2", " ", "\[Pi]"}]], " ", "+", " ", 
+          RowBox[{"\[Epsilon]", " ", "\[Eta]"}]}], " ", ")"}], " ", "v"}], 
+       " ", "]"}]}], "                          ", 
+     RowBox[{"(", "7", ")"}]}]}]}], TraditionalForm]], "Input",
+ CellChangeTimes->{{3.8043507329294467`*^9, 3.804351044938135*^9}, {
+  3.8043528093204947`*^9, 3.8043528288253403`*^9}, {3.804353546541169*^9, 
+  3.804353547041833*^9}, {3.8043537443771563`*^9, 3.8043537526221104`*^9}, {
+  3.8043568080148487`*^9, 3.804356815734233*^9}, {3.80436786024327*^9, 
+  3.80436786337789*^9}, {3.8043687574945955`*^9, 3.8043687588190794`*^9}}],
+
+Cell["\<\
+
+We substitute equation (5) to the equation (4) \
+\>", "Text",
+ CellChangeTimes->{{3.804351153551704*^9, 3.804351166739442*^9}, 
+   3.8043527809134574`*^9, {3.804352864674483*^9, 3.804352889013399*^9}, 
+   3.804359793760275*^9, 3.804360435179123*^9}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"r", " ", 
+    SuperscriptBox["\[ExponentialE]", 
+     RowBox[{"i", " ", "\[Psi]"}]]}], "  ", "=", " ", 
+   RowBox[{
+    SubsuperscriptBox["\[Integral]", "0", 
+     RowBox[{"2", " ", "\[Pi]"}]], 
+    RowBox[{
+     SubsuperscriptBox["\[Integral]", 
+      RowBox[{"-", "\[Infinity]"}], "\[Infinity]"], 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{"i", " ", "\[Theta]"}]], "(", " ", 
+       RowBox[{
+        FractionBox["1", 
+         RowBox[{"2", " ", "\[Pi]"}]], " ", "+", " ", 
+        RowBox[{"\[Epsilon]", " ", "\[Eta]"}]}], " ", ")"}], "  ", 
+      RowBox[{"g", "(", "\[Omega]", ")"}], 
+      RowBox[{"\[DifferentialD]", "\[Omega]"}], 
+      RowBox[{"\[DifferentialD]", "\[Theta]"}], "                                                  ", 
+      RowBox[{"(", "8", ")"}]}]}]}]}], TraditionalForm]], "Input",
+ CellChangeTimes->{{3.804352928802038*^9, 3.804352981504076*^9}, {
+  3.804353056826701*^9, 3.8043530972655315`*^9}, {3.8043531339045806`*^9, 
+  3.8043531432096777`*^9}, {3.804353549140258*^9, 3.804353549546174*^9}, {
+  3.8043568178266144`*^9, 3.804356822976842*^9}, {3.8043678656657715`*^9, 
+  3.804367869339946*^9}, {3.804368761401186*^9, 3.8043687677402315`*^9}}],
+
+Cell[TextData[{
+ "\nCan be simplified, the term ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["\[ExponentialE]", 
+    RowBox[{"i", " ", "\[Theta]"}]], TraditionalForm]],
+  CellChangeTimes->{{3.804352928802038*^9, 3.804352981504076*^9}}],
+ "/ 2\[Pi] is 0 under the integral of theta, the equation gives"
+}], "Text",
+ CellChangeTimes->{{3.8043529926403008`*^9, 3.8043530530677185`*^9}, {
+  3.8043597952482967`*^9, 3.8043597975830555`*^9}, {3.8043604327157106`*^9, 
+  3.8043604332273474`*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"r", " ", 
+    SuperscriptBox["\[ExponentialE]", 
+     RowBox[{"i", " ", "\[Psi]"}]]}], "  ", "=", " ", 
+   RowBox[{"\[Epsilon]", 
+    RowBox[{
+     SubsuperscriptBox["\[Integral]", "0", 
+      RowBox[{"2", " ", "\[Pi]"}]], 
+     RowBox[{
+      SubsuperscriptBox["\[Integral]", 
+       RowBox[{"-", "\[Infinity]"}], "\[Infinity]"], 
+      RowBox[{
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{"i", " ", "\[Theta]"}]], 
+       RowBox[{"\[Eta]", "(", 
+        RowBox[{"\[Theta]", ",", "t", ",", "\[Omega]"}], ")"}], " ", 
+       RowBox[{"g", "(", "\[Omega]", ")"}], 
+       RowBox[{"\[DifferentialD]", "\[Omega]"}], 
+       RowBox[{"\[DifferentialD]", "\[Theta]"}], "                                                      ", 
+       RowBox[{"(", "9", ")"}]}]}]}]}]}], TraditionalForm]], "Input",
+ CellChangeTimes->{{3.804353063740181*^9, 3.8043530638150387`*^9}, 
+   3.804353125422272*^9, 3.804353344096507*^9, {3.8043535515796976`*^9, 
+   3.804353552031489*^9}, {3.804356829746743*^9, 3.8043568342517333`*^9}, {
+   3.8043678711591196`*^9, 3.804367874133131*^9}, {3.8043687711112223`*^9, 
+   3.8043687745221066`*^9}}],
+
+Cell["\<\
+
+We define r as \
+\>", "Text",
+ CellChangeTimes->{{3.804353258594143*^9, 3.804353282797422*^9}, {
+   3.80435980015928*^9, 3.8043598136002684`*^9}, 3.804360431458075*^9}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"r", "   ", "=", " ", 
+   RowBox[{"\[Epsilon]", " ", 
+    SubscriptBox["r", "1"], "                            ", 
+    RowBox[{"(", "10", ")"}]}]}], TraditionalForm]], "Input",
+ CellChangeTimes->{{3.8043533129827056`*^9, 3.804353364293535*^9}, {
+   3.804353553831675*^9, 3.804353554879873*^9}, 3.804353894525702*^9, {
+   3.8043568357307367`*^9, 3.804356837731388*^9}, {3.80436787605499*^9, 
+   3.80436787955962*^9}, {3.8043687778192835`*^9, 3.8043687796453943`*^9}}],
+
+Cell["\<\
+
+By equation (1), v is given  \
+\>", "Text",
+ CellChangeTimes->{{3.8043533907278166`*^9, 3.804353408106389*^9}, {
+   3.8043598029397297`*^9, 3.8043598251483426`*^9}, 3.8043604291672015`*^9}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"v", "  ", "=", " ", 
+   RowBox[{
+    SubscriptBox[
+     RowBox[{"\[Omega]", " "}], "i"], " ", "+", 
+    RowBox[{"\[Epsilon]", " ", "K", " ", 
+     SubscriptBox["r", "1"], " ", "sin", " ", 
+     RowBox[{"(", " ", 
+      RowBox[{"\[Psi]", " ", "-", " ", 
+       SubscriptBox["\[Theta]", "i"]}], " ", ")"}], "                            ", 
+     RowBox[{"(", "11", ")"}]}]}]}], TraditionalForm]], "Input",
+ CellChangeTimes->{
+  3.804353422153782*^9, {3.804353481993807*^9, 3.8043534829163055`*^9}, {
+   3.8043535569623456`*^9, 3.804353559920439*^9}, {3.804353597342328*^9, 
+   3.804353617215187*^9}, 3.8043538962949295`*^9, {3.8043568474184866`*^9, 
+   3.8043568501382113`*^9}, {3.8043678812580776`*^9, 3.80436788347515*^9}, {
+   3.8043687832667227`*^9, 3.804368784592135*^9}}],
+
+Cell["\<\
+
+The last term of the equation (7) becomes\
+\>", "Text",
+ CellChangeTimes->{{3.8043536351522284`*^9, 3.8043536819730735`*^9}, {
+   3.8043598082654905`*^9, 3.8043598269864273`*^9}, 3.8043604275505657`*^9}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{" ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", " ", 
+      RowBox[{"(", " ", 
+       RowBox[{
+        FractionBox["1", 
+         RowBox[{"2", " ", "\[Pi]"}]], " ", "+", " ", 
+        RowBox[{"\[Epsilon]", " ", "\[Eta]"}]}], " ", ")"}]}], "   ", 
+     FractionBox[
+      RowBox[{"\[PartialD]", " ", "v"}], 
+      RowBox[{"\[PartialD]", " ", "\[Theta]"}]]}], "     ", "-", " ", 
+    RowBox[{"v", " ", 
+     FractionBox[
+      RowBox[{"\[PartialD]", " ", "v"}], 
+      RowBox[{"\[PartialD]", " ", "\[Theta]"}]], " ", " ", 
+     RowBox[{"(", " ", 
+      RowBox[{
+       FractionBox["1", 
+        RowBox[{"2", " ", "\[Pi]"}]], " ", "+", " ", 
+       RowBox[{"\[Epsilon]", " ", "\[Eta]"}]}], " ", ")"}], "                                ", 
+     RowBox[{"(", "12", ")"}]}]}]}], TraditionalForm]], "Input",
+ CellChangeTimes->{{3.8043537069821873`*^9, 3.8043537894416547`*^9}, {
+  3.80435389766327*^9, 3.804353903357046*^9}, {3.804356852151827*^9, 
+  3.804356853921095*^9}, {3.8043678850339813`*^9, 3.804367887739745*^9}, {
+  3.8043687863125334`*^9, 3.8043687880997543`*^9}}],
+
+Cell["\<\
+
+Taking the derivative of v and simplify, gives \
+\>", "Text",
+ CellChangeTimes->{{3.804353803532977*^9, 3.804353815971715*^9}, {
+   3.8043598282141457`*^9, 3.804359832351084*^9}, 3.8043604259458165`*^9}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{" ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", " ", 
+      RowBox[{"(", " ", 
+       RowBox[{
+        FractionBox["1", 
+         RowBox[{"2", " ", "\[Pi]"}]], " ", "+", " ", 
+        RowBox[{"\[Epsilon]", " ", "\[Eta]"}]}], " ", ")"}]}], "  ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", " ", "\[Epsilon]"}], " ", "K", " ", 
+       SubscriptBox["r", "1"], " ", "cos", " ", 
+       RowBox[{"(", " ", 
+        RowBox[{"\[Psi]", " ", "-", " ", 
+         SubscriptBox["\[Theta]", "i"]}], " ", ")"}]}], ")"}]}], " ", "-", 
+    RowBox[{"\[Epsilon]", " ", "v", 
+     FractionBox[
+      RowBox[{"\[PartialD]", "  ", "\[Eta]"}], 
+      RowBox[{"\[PartialD]", " ", "\[Theta]"}]], "            ", 
+     RowBox[{"(", "13", ")"}]}]}]}], TraditionalForm]], "Input",
+ CellChangeTimes->{{3.8043538314493265`*^9, 3.804353955101711*^9}, {
+  3.804354074792626*^9, 3.804354075705186*^9}, {3.8043568558359747`*^9, 
+  3.8043568589336925`*^9}, {3.8043678899169226`*^9, 3.804367892710457*^9}, {
+  3.8043687905472507`*^9, 3.8043688080833435`*^9}}],
+
+Cell["\<\
+
+We substitute equation (11) and taking only terms [O(\[Epsilon])]\
+\>", "Text",
+ CellChangeTimes->{{3.8043539742943993`*^9, 3.8043540401492653`*^9}, {
+   3.8043598311951747`*^9, 3.8043598342799263`*^9}, 3.804360424271291*^9}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"\[Epsilon]", "  ", 
+    FractionBox[
+     RowBox[{"K", " "}], 
+     RowBox[{"2", " ", "\[Pi]"}]], "  ", 
+    SubscriptBox["r", "1"], " ", "cos", " ", 
+    RowBox[{"(", " ", 
+     RowBox[{"\[Psi]", " ", "-", " ", 
+      SubscriptBox["\[Theta]", "i"]}], " ", ")"}]}], "-", 
+   RowBox[{"\[Epsilon]", " ", "\[Omega]", 
+    FractionBox[
+     RowBox[{"\[PartialD]", "  ", "\[Eta]"}], 
+     RowBox[{"\[PartialD]", " ", "\[Theta]"}]], "                                              ", 
+    RowBox[{"(", "14", ")"}]}]}], TraditionalForm]], "Input",
+ CellChangeTimes->{{3.8043540545008855`*^9, 3.8043541606570272`*^9}, {
+  3.8043568615816116`*^9, 3.804356865885141*^9}, {3.8043678945894284`*^9, 
+  3.8043678968444257`*^9}, {3.8043687943410673`*^9, 3.804368803017906*^9}}],
+
+Cell["\<\
+
+
+We put back the resulting equation to the equation (7) and divide by \
+\[Epsilon] to find the final equation that describes the evolution of the \
+perturbation \[Eta]\
+\>", "Text",
+ CellChangeTimes->{{3.8043541928669004`*^9, 3.8043543034312515`*^9}, {
+   3.8043598359664164`*^9, 3.8043598386891356`*^9}, 3.8043604213072147`*^9, 
+   3.8043675912754903`*^9}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{" ", 
+   RowBox[{
+    FractionBox[
+     RowBox[{" ", 
+      RowBox[{"\[PartialD]", " ", "\[Eta]"}]}], 
+     RowBox[{"\[PartialD]", " ", "t"}]], "=", "  ", 
+    RowBox[{
+     RowBox[{"D", " ", 
+      FractionBox[
+       RowBox[{" ", 
+        RowBox[{
+         SuperscriptBox["\[PartialD]", "2"], " ", "\[Eta]"}]}], 
+       RowBox[{"\[PartialD]", " ", 
+        SuperscriptBox["\[Theta]", "2"]}]]}], " ", "-", 
+     RowBox[{"\[Omega]", 
+      FractionBox[
+       RowBox[{"\[PartialD]", "  ", "\[Eta]"}], 
+       RowBox[{"\[PartialD]", " ", "\[Theta]"}]]}], "  ", "+", " ", 
+     RowBox[{
+      FractionBox[
+       RowBox[{"K", " "}], 
+       RowBox[{"2", " ", "\[Pi]"}]], "  ", 
+      SubscriptBox["r", "1"], " ", "cos", " ", 
+      RowBox[{"(", " ", 
+       RowBox[{"\[Psi]", " ", "-", " ", 
+        SubscriptBox["\[Theta]", "i"]}], " ", ")"}], "                                      ", 
+      RowBox[{"(", "15", ")"}]}]}]}]}], TraditionalForm]], "Input",
+ CellChangeTimes->{{3.804354325794448*^9, 3.8043543949603157`*^9}, {
+  3.8043568694954505`*^9, 3.8043568716945696`*^9}, {3.804365546693316*^9, 
+  3.8043655494279985`*^9}, {3.8043678986476088`*^9, 3.804367903693085*^9}, {
+  3.8043688110872865`*^9, 3.8043688194160147`*^9}}],
+
+Cell["\<\
+
+
+We use Fourier method to analyze the solutions, solutions of the form \
+\>", "Text",
+ CellChangeTimes->{{3.804354762347849*^9, 3.804354784071741*^9}, {
+   3.8043598402869844`*^9, 3.8043598414856615`*^9}, 3.8043604226138144`*^9, 
+   3.8043675925431023`*^9}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"\[Eta]", "(", 
+    RowBox[{"\[Theta]", ",", "t", ",", "\[Omega]"}], ")"}], "  ", "=", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"c", "(", 
+      RowBox[{"t", ",", "\[Omega]"}], ")"}], 
+     SuperscriptBox["\[ExponentialE]", 
+      RowBox[{"i", " ", "\[Theta]"}]]}], "+", 
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["c", "*"], "(", 
+      RowBox[{"t", ",", "\[Omega]"}], ")"}], 
+     SuperscriptBox["\[ExponentialE]", 
+      RowBox[{
+       RowBox[{"-", "i"}], " ", "\[Theta]"}]]}], "+", "  ", 
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["\[Eta]", "\[UpTee]"], "(", 
+      RowBox[{"\[Theta]", ",", "t", ",", "\[Omega]"}], ")"}], "                                  ", 
+     RowBox[{"(", "16", ")"}]}]}]}], TraditionalForm]], "Input",
+ CellChangeTimes->{{3.8043548133594227`*^9, 3.8043549176675014`*^9}, {
+  3.8043568744262934`*^9, 3.8043568762254543`*^9}, {3.8043679055790873`*^9, 
+  3.8043679078459806`*^9}, {3.804368815938315*^9, 3.804368817178997*^9}}],
+
+Cell[TextData[{
+ "\n\nWhere c is the first Fourier coefficient, ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["c", "*"], TraditionalForm]],
+  CellChangeTimes->{{3.8043548133594227`*^9, 3.8043549176675014`*^9}}],
+ " is its complex conjugate, and ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["\[Eta]", "\[UpTee]"], TraditionalForm]],
+  CellChangeTimes->{{3.8043548133594227`*^9, 3.8043549176675014`*^9}}],
+ " contains all the higher harmonics. We can see that r depend only on the \
+first harmonics by subsituting the equation (16) into equation (9) gives "
+}], "Text",
+ CellChangeTimes->{{3.8043549319763746`*^9, 3.804355005493907*^9}, {
+   3.8043550817030053`*^9, 3.8043551218446674`*^9}, {3.804355265241261*^9, 
+   3.80435526660059*^9}, {3.8043598433995404`*^9, 3.804359844525528*^9}, 
+   3.8043604174715214`*^9, 3.8043675943253355`*^9}],
+
+Cell[BoxData[{
+ FormBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     SubscriptBox["r", "1"], "  ", " ", 
+     SuperscriptBox["\[ExponentialE]", 
+      RowBox[{"i", " ", "\[Psi]"}]]}], "  ", "=", 
+    RowBox[{
+     SubsuperscriptBox["\[Integral]", "0", 
+      RowBox[{"2", " ", "\[Pi]"}]], 
+     RowBox[{
+      SubsuperscriptBox["\[Integral]", 
+       RowBox[{"-", "\[Infinity]"}], "\[Infinity]"], 
+      RowBox[{
+       RowBox[{
+        SuperscriptBox["\[ExponentialE]", 
+         RowBox[{"i", " ", "\[Theta]"}]], "(", 
+        RowBox[{
+         UnderscriptBox["\[Sum]", "n"], 
+         RowBox[{
+          RowBox[{
+           SubscriptBox["c", "n"], "(", 
+           RowBox[{"w", ",", "t"}], ")"}], 
+          SuperscriptBox["\[ExponentialE]", 
+           RowBox[{"i", " ", "n", " ", "\[Theta]"}]]}]}], ")"}], 
+       RowBox[{"g", "(", "\[Omega]", ")"}], 
+       RowBox[{"\[DifferentialD]", "\[Omega]"}], 
+       RowBox[{"\[DifferentialD]", "\[Theta]"}]}]}]}]}], " "}], 
+  TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     SubscriptBox["r", "1"], "  ", " ", 
+     SuperscriptBox["\[ExponentialE]", 
+      RowBox[{"i", " ", "\[Psi]"}]]}], "  ", "=", 
+    RowBox[{
+     SubsuperscriptBox["\[Integral]", 
+      RowBox[{"-", "\[Infinity]"}], "\[Infinity]"], 
+     RowBox[{
+      UnderscriptBox["\[Sum]", "n"], 
+      RowBox[{
+       RowBox[{
+        SubscriptBox["c", "n"], "(", 
+        RowBox[{"w", ",", "t"}], ")"}], 
+       RowBox[{"(", 
+        RowBox[{
+         SubsuperscriptBox["\[Integral]", "0", 
+          RowBox[{"2", " ", "\[Pi]"}]], 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{"i", " ", 
+           RowBox[{"(", 
+            RowBox[{"n", " ", "+", " ", "1"}], " ", ")"}], " ", 
+           "\[Theta]"}]]}], ")"}], 
+       RowBox[{"g", "(", "\[Omega]", ")"}], 
+       RowBox[{"\[DifferentialD]", "\[Omega]"}], 
+       RowBox[{"\[DifferentialD]", "\[Theta]"}]}]}]}]}], " "}], 
+  TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubscriptBox["r", "1"], "  ", " ", 
+    SuperscriptBox["\[ExponentialE]", 
+     RowBox[{"i", " ", "\[Psi]"}]]}], "  ", "=", 
+   RowBox[{
+    SubsuperscriptBox["\[Integral]", 
+     RowBox[{"-", "\[Infinity]"}], "\[Infinity]"], 
+    RowBox[{
+     UnderscriptBox["\[Sum]", "n"], 
+     RowBox[{
+      RowBox[{
+       SubscriptBox["c", "n"], "(", 
+       RowBox[{"w", ",", "t"}], ")"}], 
+      SubscriptBox["\[Delta]", 
+       RowBox[{"n", ",", 
+        RowBox[{"-", "1"}]}]], 
+      RowBox[{"g", "(", "\[Omega]", ")"}], 
+      RowBox[{"\[DifferentialD]", "\[Omega]"}]}]}]}]}], 
+  TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubscriptBox["r", "1"], "  ", " ", 
+    SuperscriptBox["\[ExponentialE]", 
+     RowBox[{"i", " ", "\[Psi]"}]]}], "  ", "=", " ", 
+   RowBox[{"2", " ", "\[Pi]", 
+    RowBox[{
+     SubsuperscriptBox["\[Integral]", 
+      RowBox[{"-", "\[Infinity]"}], "\[Infinity]"], 
+     RowBox[{
+      RowBox[{
+       SubscriptBox["c", 
+        RowBox[{"-", "1"}]], "(", 
+       RowBox[{"w", ",", "t"}], ")"}], 
+      RowBox[{"g", "(", "\[Omega]", ")"}], 
+      RowBox[{"\[DifferentialD]", "\[Omega]"}]}]}]}]}], 
+  TraditionalForm]}], "Input",
+ CellChangeTimes->{{3.804355158146592*^9, 3.8043552019105806`*^9}, {
+   3.804355272609523*^9, 3.8043552921642323`*^9}, {3.804355504749778*^9, 
+   3.8043555098032637`*^9}, {3.8043555855217924`*^9, 3.804355663583063*^9}, {
+   3.8043556983201694`*^9, 3.804355882356095*^9}, 3.8043565363413067`*^9, {
+   3.804356881338812*^9, 3.8043568897642922`*^9}, {3.804367910943698*^9, 
+   3.8043679199606333`*^9}, {3.8043679642212353`*^9, 3.8043679646540785`*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubscriptBox["r", "1"], "  ", " ", 
+    SuperscriptBox["\[ExponentialE]", 
+     RowBox[{"i", " ", "\[Psi]"}]]}], "  ", "=", 
+   RowBox[{"2", " ", "\[Pi]", 
+    RowBox[{
+     SubsuperscriptBox["\[Integral]", 
+      RowBox[{"-", "\[Infinity]"}], "\[Infinity]"], 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox["c", "*"], "(", 
+       RowBox[{"t", ",", "\[Omega]"}], ")"}], " ", 
+      RowBox[{"g", "(", "\[Omega]", ")"}], 
+      RowBox[{"\[DifferentialD]", "\[Omega]"}], "                  ", 
+      RowBox[{"(", "17", ")"}]}]}]}]}], TraditionalForm]], "Input",
+ CellChangeTimes->{{3.804367954564097*^9, 3.8043679714927907`*^9}, {
+  3.804368824374756*^9, 3.8043688267364416`*^9}}],
+
+Cell["\<\
+
+This results means that we can solve r with only the first harmonic . So we \
+can rewritte this equation to insert in the equation (15) as \
+\>", "Text",
+ CellChangeTimes->{{3.8043553047675366`*^9, 3.804355325279683*^9}, {
+   3.8043554305132933`*^9, 3.804355469096115*^9}, {3.8043559247816153`*^9, 
+   3.804355933059477*^9}, {3.8043561930991364`*^9, 3.804356202661565*^9}, {
+   3.8043598468632774`*^9, 3.804359854993538*^9}, 3.8043604149742255`*^9}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubscriptBox["r", "1"], "  ", 
+    RowBox[{"cos", "(", 
+     RowBox[{"\[Psi]", "-", "\[Theta]"}], ")"}]}], "  ", "=", " ", 
+   RowBox[{"\[Pi]", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        SubsuperscriptBox["\[Integral]", 
+         RowBox[{"-", "\[Infinity]"}], "\[Infinity]"], 
+        RowBox[{
+         RowBox[{
+          SuperscriptBox["c", "*"], "(", 
+          RowBox[{"t", ",", "\[Omega]"}], ")"}], " ", 
+         RowBox[{"g", "(", "\[Omega]", ")"}], 
+         RowBox[{"\[DifferentialD]", "\[Omega]"}]}]}], " ", ")"}], 
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{
+        RowBox[{"-", "i"}], " ", "\[Theta]"}]]}], "+", " ", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        SubsuperscriptBox["\[Integral]", 
+         RowBox[{"-", "\[Infinity]"}], "\[Infinity]"], 
+        RowBox[{
+         RowBox[{"c", "(", 
+          RowBox[{"t", ",", "\[Omega]"}], ")"}], " ", 
+         RowBox[{"g", "(", "\[Omega]", ")"}], 
+         RowBox[{"\[DifferentialD]", "\[Omega]"}]}]}], ")"}], 
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"i", " ", "\[Theta]"}]], "                                ", 
+      RowBox[{"(", "18", ")"}]}]}]}]}], TraditionalForm]], "Input",
+ CellChangeTimes->{{3.804355960420317*^9, 3.804355978563809*^9}, {
+  3.804356017187555*^9, 3.804356087937334*^9}, {3.8043565310654116`*^9, 
+  3.8043565336973724`*^9}, {3.8043566897062073`*^9, 3.8043566919571896`*^9}, {
+  3.8043568923832483`*^9, 3.8043569019975414`*^9}, {3.804367922797007*^9, 
+  3.804367926150037*^9}, {3.804368828663287*^9, 3.804368830226149*^9}}],
+
+Cell["\<\
+
+The evolution equation with the equations (16) and (18) gives \
+\>", "Text",
+ CellChangeTimes->{{3.8043562120025935`*^9, 3.804356242007354*^9}, 
+   3.8043598566122074`*^9}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{" ", 
+   RowBox[{
+    RowBox[{
+     FractionBox[
+      RowBox[{" ", 
+       RowBox[{"\[PartialD]", " "}]}], 
+      RowBox[{"\[PartialD]", " ", "t"}]], 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"c", "(", 
+         RowBox[{"t", ",", "\[Omega]"}], ")"}], 
+        SuperscriptBox["\[ExponentialE]", 
+         RowBox[{"i", " ", "\[Theta]"}]]}], "+", 
+       RowBox[{
+        RowBox[{
+         SuperscriptBox["c", "*"], "(", 
+         RowBox[{"t", ",", "\[Omega]"}], ")"}], 
+        SuperscriptBox["\[ExponentialE]", 
+         RowBox[{
+          RowBox[{"-", "i"}], " ", "\[Theta]"}]]}], "+", "  ", 
+       RowBox[{
+        SuperscriptBox["\[Eta]", "\[UpTee]"], "(", 
+        RowBox[{"\[Theta]", ",", "t", ",", "\[Omega]"}], ")"}]}], ")"}]}], 
+    "=", "  ", 
+    RowBox[{
+     RowBox[{"D", " ", 
+      FractionBox[
+       RowBox[{" ", 
+        RowBox[{
+         SuperscriptBox["\[PartialD]", "2"], " "}]}], 
+       RowBox[{"\[PartialD]", " ", 
+        SuperscriptBox["\[Theta]", "2"]}]], 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"c", "(", 
+          RowBox[{"t", ",", "\[Omega]"}], ")"}], 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{"i", " ", "\[Theta]"}]]}], "+", 
+        RowBox[{
+         RowBox[{
+          SuperscriptBox["c", "*"], "(", 
+          RowBox[{"t", ",", "\[Omega]"}], ")"}], 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{
+           RowBox[{"-", "i"}], " ", "\[Theta]"}]]}], "+", "  ", 
+        RowBox[{
+         SuperscriptBox["\[Eta]", "\[UpTee]"], "(", 
+         RowBox[{"\[Theta]", ",", "t", ",", "\[Omega]"}], ")"}]}], ")"}]}], 
+     " ", "-", 
+     RowBox[{"\[Omega]", 
+      FractionBox[
+       RowBox[{"\[PartialD]", "  "}], 
+       RowBox[{"\[PartialD]", " ", "\[Theta]"}]], 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"c", "(", 
+          RowBox[{"t", ",", "\[Omega]"}], ")"}], 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{"i", " ", "\[Theta]"}]]}], "+", 
+        RowBox[{
+         RowBox[{
+          SuperscriptBox["c", "*"], "(", 
+          RowBox[{"t", ",", "\[Omega]"}], ")"}], 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{
+           RowBox[{"-", "i"}], " ", "\[Theta]"}]]}], "+", "  ", 
+        RowBox[{
+         SuperscriptBox["\[Eta]", "\[UpTee]"], "(", 
+         RowBox[{"\[Theta]", ",", "t", ",", "\[Omega]"}], ")"}]}], ")"}]}], 
+     "  ", "+", " ", 
+     RowBox[{
+      RowBox[{
+       FractionBox[
+        RowBox[{"K", " "}], 
+        RowBox[{"2", " "}]], "  ", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           SubsuperscriptBox["\[Integral]", 
+            RowBox[{"-", "\[Infinity]"}], "\[Infinity]"], 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["c", "*"], "(", 
+             RowBox[{"t", ",", "\[Omega]"}], ")"}], " ", 
+            RowBox[{"g", "(", "\[Omega]", ")"}], 
+            RowBox[{"\[DifferentialD]", "\[Omega]"}]}]}], " ", ")"}], 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{
+           RowBox[{"-", "i"}], " ", "\[Theta]"}]]}], "+", " ", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           SubsuperscriptBox["\[Integral]", 
+            RowBox[{"-", "\[Infinity]"}], "\[Infinity]"], 
+           RowBox[{
+            RowBox[{"c", "(", 
+             RowBox[{"t", ",", "\[Omega]"}], ")"}], " ", 
+            RowBox[{"g", "(", "\[Omega]", ")"}], 
+            RowBox[{"\[DifferentialD]", "\[Omega]"}]}]}], " ", ")"}], 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{"i", " ", "\[Theta]"}]]}]}], "]"}], "                             ", 
+      RowBox[{"(", "19", ")"}]}]}]}]}], TraditionalForm]], "Input",
+ CellChangeTimes->{{3.804356267804371*^9, 3.804356284073865*^9}, {
+   3.804356324556616*^9, 3.8043563774671564`*^9}, {3.804356523654228*^9, 
+   3.8043565261415772`*^9}, {3.8043568965151987`*^9, 3.8043568996657753`*^9}, 
+   3.8043674689775133`*^9, {3.804367929182926*^9, 3.8043679341955633`*^9}, {
+   3.8043688328869934`*^9, 3.8043688344348536`*^9}}],
+
+Cell["\<\
+
+Taking the derivatives and collecting terms gives,
+\
+\>", "Text",
+ CellChangeTimes->{{3.8043563921568537`*^9, 3.8043564033619385`*^9}, {
+  3.804359858871167*^9, 3.804359860097889*^9}, {3.804367491653881*^9, 
+  3.8043674920817733`*^9}, {3.80436752467658*^9, 3.8043675253837166`*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     SuperscriptBox["\[ExponentialE]", 
+      RowBox[{"i", " ", "\[Theta]"}]], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       FractionBox[
+        RowBox[{" ", 
+         RowBox[{"\[PartialD]", " ", "c", " "}]}], 
+        RowBox[{"\[PartialD]", " ", "t"}]], "+", 
+       RowBox[{"D", " ", "c"}], " ", "+", " ", 
+       RowBox[{"i", " ", "\[Omega]", " ", "c"}], "-", 
+       RowBox[{
+        FractionBox[
+         RowBox[{"K", " "}], 
+         RowBox[{"2", " "}]], " ", 
+        RowBox[{
+         SubsuperscriptBox["\[Integral]", 
+          RowBox[{"-", "\[Infinity]"}], "\[Infinity]"], 
+         RowBox[{"c", " ", 
+          RowBox[{"g", "(", "v", ")"}], 
+          RowBox[{"\[DifferentialD]", "v"}]}]}]}]}], " ", ")"}]}], " ", "+", 
+    " ", 
+    RowBox[{
+     SuperscriptBox["\[ExponentialE]", 
+      RowBox[{
+       RowBox[{"-", "i"}], " ", "\[Theta]"}]], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       FractionBox[
+        RowBox[{" ", 
+         RowBox[{"\[PartialD]", " ", 
+          SuperscriptBox["c", "*"], " "}]}], 
+        RowBox[{"\[PartialD]", " ", "t"}]], "+", 
+       RowBox[{"D", " ", 
+        SuperscriptBox["c", "*"]}], " ", "-", " ", 
+       RowBox[{"i", " ", "\[Omega]", " ", 
+        SuperscriptBox["c", "*"]}], "-", 
+       RowBox[{
+        FractionBox[
+         RowBox[{"K", " "}], 
+         RowBox[{"2", " "}]], " ", 
+        RowBox[{
+         SubsuperscriptBox["\[Integral]", 
+          RowBox[{"-", "\[Infinity]"}], "\[Infinity]"], 
+         RowBox[{
+          SuperscriptBox["c", "*"], " ", 
+          RowBox[{"g", "(", "v", ")"}], 
+          RowBox[{"\[DifferentialD]", "v"}]}]}]}]}], " ", ")"}]}], " ", "+", 
+    " ", 
+    RowBox[{"(", " ", 
+     RowBox[{
+      FractionBox[
+       RowBox[{" ", 
+        RowBox[{"\[PartialD]", " ", 
+         SuperscriptBox["\[Eta]", "\[UpTee]"]}]}], 
+       RowBox[{"\[PartialD]", " ", "t"}]], "-", "  ", 
+      RowBox[{"D", " ", 
+       FractionBox[
+        RowBox[{" ", 
+         RowBox[{
+          SuperscriptBox["\[PartialD]", "2"], " ", 
+          SuperscriptBox["\[Eta]", "\[UpTee]"]}]}], 
+        RowBox[{"\[PartialD]", " ", 
+         SuperscriptBox["\[Theta]", "2"]}]]}], " ", "+", " ", 
+      RowBox[{"\[Omega]", 
+       FractionBox[
+        RowBox[{"\[PartialD]", "  ", 
+         SuperscriptBox["\[Eta]", "\[UpTee]"]}], 
+        RowBox[{"\[PartialD]", " ", "\[Theta]"}]]}]}], ")"}]}], "=", "  ", 
+   RowBox[{"0", "                                                                     ", 
+    RowBox[{"(", "20", ")"}]}]}], TraditionalForm]], "Input",
+ CellChangeTimes->{{3.8043564286183634`*^9, 3.8043566963324876`*^9}, {
+   3.804356904317337*^9, 3.804356937032856*^9}, {3.8043667233981905`*^9, 
+   3.8043667274503546`*^9}, {3.8043679364514904`*^9, 3.80436794118583*^9}, 
+   3.804368838202779*^9}],
+
+Cell["\<\
+
+Each bracket must be 0, we can get the evolution equation separated by two \
+equations, because the second equation it\[CloseCurlyQuote]s just the complex \
+conjugate of the first.\
+\>", "Text",
+ CellChangeTimes->{{3.8043569522033253`*^9, 3.8043570078754625`*^9}, 
+   3.804359861371482*^9, 3.804360408300994*^9}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FractionBox[
+    RowBox[{" ", 
+     RowBox[{"\[PartialD]", " ", "c", " "}]}], 
+    RowBox[{"\[PartialD]", " ", "t"}]], "=", 
+   RowBox[{
+    RowBox[{"-", 
+     RowBox[{"(", " ", 
+      RowBox[{"D", " ", "+", " ", 
+       RowBox[{"i", " ", "\[Omega]"}]}], " ", ")"}]}], "+", 
+    RowBox[{
+     FractionBox[
+      RowBox[{"K", " "}], 
+      RowBox[{"2", " "}]], " ", 
+     RowBox[{
+      SubsuperscriptBox["\[Integral]", 
+       RowBox[{"-", "\[Infinity]"}], "\[Infinity]"], 
+      RowBox[{"c", " ", 
+       RowBox[{"g", "(", "v", ")"}], 
+       RowBox[{"\[DifferentialD]", "v"}], "                     ", 
+       RowBox[{"(", "21", ")"}], "                               "}]}]}]}]}], 
+  TraditionalForm]], "Input",
+ CellChangeTimes->{{3.804357022830474*^9, 3.804357118141572*^9}, {
+  3.8043679747530713`*^9, 3.8043680388107815`*^9}, {3.8043688417084055`*^9, 
+  3.8043688540863094`*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FractionBox[
+    RowBox[{" ", 
+     RowBox[{"\[PartialD]", " ", 
+      SuperscriptBox["\[Eta]", "\[UpTee]"]}]}], 
+    RowBox[{"\[PartialD]", " ", "t"}]], "=", "  ", 
+   RowBox[{
+    RowBox[{"D", " ", 
+     FractionBox[
+      RowBox[{" ", 
+       RowBox[{
+        SuperscriptBox["\[PartialD]", "2"], " ", 
+        SuperscriptBox["\[Eta]", "\[UpTee]"]}]}], 
+      RowBox[{"\[PartialD]", " ", 
+       SuperscriptBox["\[Theta]", "2"]}]]}], " ", "-", " ", 
+    RowBox[{"\[Omega]", 
+     FractionBox[
+      RowBox[{"\[PartialD]", "  ", 
+       SuperscriptBox["\[Eta]", "\[UpTee]"]}], 
+      RowBox[{"\[PartialD]", " ", "\[Theta]"}]], "                                       ", 
+     RowBox[{"(", "22", ")"}]}]}]}], TraditionalForm]], "Input",
+ CellChangeTimes->{{3.804357120090359*^9, 3.804357122676445*^9}, {
+   3.804366716773907*^9, 3.8043667199384513`*^9}, {3.8043679940115747`*^9, 
+   3.804368002780131*^9}, {3.804368041397869*^9, 3.804368055616845*^9}, 
+   3.804368843257265*^9}],
+
+Cell["\<\
+
+The first equation is the evolution of the fundamental node, wich tells about \
+the synchronization behavior, and the second equation that describes the \
+evolution of the higher harmonics.
+To study the evolution of the fundamental node, we first look for separable \
+solution of the form \
+\>", "Text",
+ CellChangeTimes->{{3.8043574397047195`*^9, 3.8043574993731594`*^9}, {
+   3.8043576828754745`*^9, 3.8043577110481424`*^9}, 3.8043598633452044`*^9, 
+   3.8043604061288047`*^9}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"c", "(", 
+    RowBox[{"t", ",", "\[Omega]"}], ")"}], " ", "=", " ", 
+   RowBox[{"b", " ", 
+    RowBox[{"(", "\[Omega]", ")"}], " ", 
+    SuperscriptBox["\[ExponentialE]", 
+     RowBox[{"\[Lambda]", " ", "t"}]], "                  ", 
+    RowBox[{"(", "23", ")"}], " "}]}], TraditionalForm]], "Input",
+ CellChangeTimes->{{3.804357726437036*^9, 3.804357773081273*^9}, {
+  3.8043680591922817`*^9, 3.8043680701440334`*^9}, {3.8043688614436407`*^9, 
+  3.8043688679362736`*^9}}],
+
+Cell["\<\
+
+The eigenvalue \[Lambda] tells how c evolves in time . The linear operator L \
+of the right hand side of the equation (21) is given by \
+\>", "Text",
+ CellChangeTimes->{{3.8043577862710342`*^9, 3.804357850194067*^9}, {
+   3.804359865109488*^9, 3.8043598667481365`*^9}, 3.804360404046373*^9}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"L", " ", "c"}], "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", 
+      RowBox[{"(", " ", 
+       RowBox[{"D", " ", "+", " ", 
+        RowBox[{"i", " ", "\[Omega]"}]}], " ", ")"}]}], "c"}], "+", 
+    RowBox[{
+     FractionBox[
+      RowBox[{"K", " "}], 
+      RowBox[{"2", " "}]], " ", 
+     RowBox[{
+      SubsuperscriptBox["\[Integral]", 
+       RowBox[{"-", "\[Infinity]"}], "\[Infinity]"], 
+      RowBox[{"c", " ", 
+       RowBox[{"g", "(", "v", ")"}], 
+       RowBox[{"\[DifferentialD]", "v"}], "                                      ", 
+       RowBox[{"(", "24", ")"}], 
+       "                                 "}]}]}]}]}], 
+  TraditionalForm]], "Input",
+ CellChangeTimes->{{3.8043578582734613`*^9, 3.8043578632082653`*^9}, 
+   3.8043585725823445`*^9, {3.804360277772029*^9, 3.8043602866981754`*^9}, {
+   3.8043680722005424`*^9, 3.804368080044568*^9}, {3.8043681812399282`*^9, 
+   3.8043681821026216`*^9}, {3.8043685786223693`*^9, 3.804368583646937*^9}, {
+   3.8043688706779413`*^9, 3.8043688818630743`*^9}},
+ TextJustification->0.25],
+
+Cell["\<\
+
+The eigenvalue equation is given by \
+\>", "Text",
+ CellChangeTimes->{{3.8043578875451922`*^9, 3.804357893401531*^9}, {
+   3.8043598680167165`*^9, 3.804359869212517*^9}, 3.80436040208167*^9}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"L", " ", "-", " ", 
+      RowBox[{"\[Lambda]", " ", "\[CapitalIota]"}]}], " ", ")"}], "c"}], " ", 
+   "=", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"L", " ", "-", " ", 
+       RowBox[{"\[Lambda]", " ", "\[CapitalIota]"}]}], " ", ")"}], "  ", "b", 
+     "  ", 
+     SuperscriptBox["\[ExponentialE]", 
+      RowBox[{"\[Lambda]", " ", "t"}]]}], " ", "=", " ", 
+    RowBox[{"0", "                                             ", 
+     RowBox[{"(", "25", ")"}], " "}]}]}], TraditionalForm]], "Input",
+ CellChangeTimes->{{3.804357912981176*^9, 3.80435795990071*^9}, {
+  3.8043680847798605`*^9, 3.8043681088614736`*^9}, {3.804368874077885*^9, 
+  3.804368880322152*^9}}],
+
+Cell[TextData[{
+ "\nWhere I is the identity operator. Dividing by ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["\[ExponentialE]", 
+    RowBox[{"\[Lambda]", " ", "t"}]], TraditionalForm]],
+  CellChangeTimes->{{3.804357912981176*^9, 3.80435795990071*^9}}],
+ " , gives "
+}], "Text",
+ CellChangeTimes->{{3.8043579694851255`*^9, 3.804358003711566*^9}, {
+   3.8043584119614983`*^9, 3.8043584163946915`*^9}, {3.804359870468158*^9, 
+   3.8043598714764605`*^9}, 3.804360400631538*^9}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"\[Lambda]", " ", "b"}], " ", "=", " ", 
+   RowBox[{
+    RowBox[{"L", " ", "b"}], " ", "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", 
+       RowBox[{"(", " ", 
+        RowBox[{"D", " ", "+", " ", 
+         RowBox[{"i", " ", "\[Omega]"}]}], " ", ")"}]}], "b"}], "+", 
+     RowBox[{
+      FractionBox[
+       RowBox[{"K", " "}], 
+       RowBox[{"2", " "}]], " ", 
+      RowBox[{
+       SubsuperscriptBox["\[Integral]", 
+        RowBox[{"-", "\[Infinity]"}], "\[Infinity]"], 
+       RowBox[{
+        RowBox[{"b", "(", "v", ")"}], 
+        RowBox[{"g", "(", "v", ")"}], 
+        RowBox[{"\[DifferentialD]", "v"}], "                  ", 
+        RowBox[{"(", "26", ")"}], "                             "}]}]}]}]}]}],
+   TraditionalForm]], "Input",
+ CellChangeTimes->{{3.804358516065467*^9, 3.804358536044009*^9}, {
+   3.8043585777425494`*^9, 3.8043585986576056`*^9}, {3.8043602731135254`*^9, 
+   3.80436029561432*^9}, {3.8043680948080873`*^9, 3.804368111929341*^9}, 
+   3.8043681742067738`*^9, {3.8043688842127542`*^9, 3.8043688945241766`*^9}}],
+
+Cell["\<\
+
+The integral is just a constant, we call it\
+\>", "Text",
+ CellChangeTimes->{{3.804358862664631*^9, 3.8043588773822746`*^9}, {
+   3.804359873762349*^9, 3.8043598752982426`*^9}, 3.8043603993549166`*^9}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"A", " ", "=", " ", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"K", " "}], 
+     RowBox[{"2", " "}]], " ", 
+    RowBox[{
+     SubsuperscriptBox["\[Integral]", 
+      RowBox[{"-", "\[Infinity]"}], "\[Infinity]"], 
+     RowBox[{
+      RowBox[{"b", "(", "v", ")"}], 
+      RowBox[{"g", "(", "v", ")"}], 
+      RowBox[{"\[DifferentialD]", "v"}], "                                             ", 
+      RowBox[{"(", "27", ")"}], " "}]}]}]}], TraditionalForm]], "Input",
+ CellChangeTimes->{{3.804358896502184*^9, 3.804358909508391*^9}, {
+   3.804368116406337*^9, 3.8043681193893156`*^9}, 3.804368171998646*^9, {
+   3.8043688976368523`*^9, 3.8043689035041647`*^9}}],
+
+Cell["\<\
+
+Solving for b in the equation (26)\
+\>", "Text",
+ CellChangeTimes->{{3.804359406775079*^9, 3.804359419542929*^9}, {
+   3.8043598770824738`*^9, 3.8043598783252687`*^9}, 3.804360398040436*^9}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"b", "(", "\[Omega]", ")"}], " ", "=", " ", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"A", " "}], 
+     RowBox[{"\[Lambda]", " ", "+", " ", "D", " ", "+", " ", 
+      RowBox[{"i", " ", "\[Omega]", " "}]}]], "                                                 ", 
+    RowBox[{"(", "28", ")"}], "                             "}]}], 
+  TraditionalForm]], "Input",
+ CellChangeTimes->{{3.8043594294983096`*^9, 3.8043594878083897`*^9}, {
+  3.804368124664255*^9, 3.8043681392282653`*^9}, {3.8043689062568035`*^9, 
+  3.8043689127893724`*^9}}],
+
+Cell["\<\
+
+Using a sel-consistency argument by substitute b in the equation (27)\
+\>", "Text",
+ CellChangeTimes->{{3.804359529581689*^9, 3.8043595901866355`*^9}, {
+   3.804359879711445*^9, 3.804359880829455*^9}, 3.80436039639297*^9}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"A", " ", "=", " ", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"K", " "}], 
+     RowBox[{"2", " "}]], " ", 
+    RowBox[{
+     SubsuperscriptBox["\[Integral]", 
+      RowBox[{"-", "\[Infinity]"}], "\[Infinity]"], 
+     RowBox[{
+      FractionBox[
+       RowBox[{"A", " "}], 
+       RowBox[{"\[Lambda]", " ", "+", " ", "D", " ", "+", " ", 
+        RowBox[{"i", " ", "v", " "}]}]], 
+      RowBox[{"g", "(", "v", ")"}], 
+      RowBox[{"\[DifferentialD]", "v"}], "                         ", 
+      RowBox[{"(", "29", ")"}], " "}]}]}]}], TraditionalForm]], "Input",
+ CellChangeTimes->{
+  3.8043596054298706`*^9, {3.804359675541391*^9, 3.804359675664063*^9}, {
+   3.804360262284483*^9, 3.8043602627771487`*^9}, {3.8043681531819563`*^9, 
+   3.8043681609671373`*^9}, {3.8043689149804993`*^9, 3.804368917833846*^9}}],
+
+Cell["\<\
+
+Then the resulting equation for eigenvalue \[Lambda] is\
+\>", "Text",
+ CellChangeTimes->{{3.804359638810611*^9, 3.804359667586663*^9}, {
+   3.804359882552843*^9, 3.8043598837865458`*^9}, 3.804360394371243*^9}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"1", "=", " ", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"K", " "}], 
+     RowBox[{"2", " "}]], " ", 
+    RowBox[{
+     SubsuperscriptBox["\[Integral]", 
+      RowBox[{"-", "\[Infinity]"}], "\[Infinity]"], 
+     RowBox[{
+      FractionBox[
+       RowBox[{"g", "(", "v", ")"}], 
+       RowBox[{"\[Lambda]", " ", "+", " ", "D", " ", "+", " ", 
+        RowBox[{"i", " ", "v", " "}]}]], 
+      RowBox[{"\[DifferentialD]", "v"}], "                                     ", 
+      RowBox[{"(", "30", ")"}], " "}]}]}]}], TraditionalForm]], "Input",
+ CellChangeTimes->{{3.804359678766765*^9, 3.8043596934664655`*^9}, {
+  3.804360259000269*^9, 3.8043602598290157`*^9}, {3.804368186400161*^9, 
+  3.804368190113201*^9}, {3.8043689207301016`*^9, 3.804368924269637*^9}}],
+
+Cell["\<\
+
+multiplying and dividing by the complex conjugate of the denominator gives \
+\>", "Text",
+ CellChangeTimes->{
+  3.804360143363555*^9, {3.804360182491813*^9, 3.804360212248288*^9}, {
+   3.8043603882276745`*^9, 3.80436039296301*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"1", "=", " ", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"K", " "}], 
+     RowBox[{"2", " "}]], " ", 
+    RowBox[{
+     SubsuperscriptBox["\[Integral]", 
+      RowBox[{"-", "\[Infinity]"}], "\[Infinity]"], 
+     RowBox[{
+      FractionBox[
+       RowBox[{"\[Lambda]", " ", "+", " ", "D", " ", "-", " ", 
+        RowBox[{"i", " ", "v", " "}]}], 
+       RowBox[{
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{"\[Lambda]", " ", "+", " ", "D"}], ")"}], "2"], " ", "+", 
+        "  ", 
+        SuperscriptBox[
+         RowBox[{"v", " "}], "2"]}]], 
+      RowBox[{"g", "(", "v", ")"}], " ", 
+      RowBox[{"\[DifferentialD]", "v"}], "                      ", 
+      RowBox[{"(", "31", ")"}], " "}]}]}]}], TraditionalForm]], "Input",
+ CellChangeTimes->{{3.8043602657990484`*^9, 3.8043602661661024`*^9}, {
+   3.8043603320528803`*^9, 3.8043603798760014`*^9}, {3.8043605582074957`*^9, 
+   3.804360558528635*^9}, {3.8043681942581415`*^9, 3.804368202428316*^9}, 
+   3.804368927710436*^9}],
+
+Cell["\<\
+The integral of the imaginary part is 0 because is an odd function\
+\>", "Text",
+ CellChangeTimes->{{3.8043605291402607`*^9, 3.804360548737818*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"1", "=", " ", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"K", " "}], 
+     RowBox[{"2", " "}]], " ", 
+    RowBox[{
+     SubsuperscriptBox["\[Integral]", 
+      RowBox[{"-", "\[Infinity]"}], "\[Infinity]"], 
+     RowBox[{
+      FractionBox[
+       RowBox[{"\[Lambda]", " ", "+", " ", "D", "  "}], 
+       RowBox[{
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{"\[Lambda]", " ", "+", " ", "D"}], ")"}], "2"], " ", "+", 
+        "  ", 
+        SuperscriptBox[
+         RowBox[{"v", " "}], "2"]}]], 
+      RowBox[{"g", "(", "v", ")"}], " ", 
+      RowBox[{"\[DifferentialD]", "v"}], "                      ", 
+      RowBox[{"(", "32", ")"}], " "}]}]}]}], TraditionalForm]], "Input",
+ CellChangeTimes->{
+  3.80436056139896*^9, {3.804361349551488*^9, 3.8043613501618524`*^9}, {
+   3.8043682047470684`*^9, 3.804368207021984*^9}, {3.804368931092393*^9, 
+   3.804368935245288*^9}}],
+
+Cell[TextData[{
+ " \n",
+ StyleBox["Finding Kc with Noise ", "Subchapter"]
+}], "Text",
+ CellChangeTimes->{{3.804360570752946*^9, 3.8043607410665293`*^9}, {
+  3.804361506931609*^9, 3.8043615933555107`*^9}, {3.8043616499491854`*^9, 
+  3.804361854794425*^9}, {3.8043619331987705`*^9, 3.8043619346468983`*^9}, {
+  3.804362025009276*^9, 3.804362027169496*^9}}],
+
+Cell["\<\
+The eigenvalue \[Lambda] tells the stability of c, and therefore the \
+stability of r . From the equation (23) we see that if \[Lambda] > 0, c grows \
+exponentially, and therefore r grows exponentially, that means the incoherent \
+state is unstable. If \[Lambda] < 0, c decays and r decays to zero making the \
+incoherent state stable. We can see that \[Lambda] > - D so that the right \
+side of the equation (32) can be positive.
+ With no noise, D = 0, means that \[Lambda] cannot be negative, but from the \
+previous discussion \[Lambda] must be negative for the incoherent state to be \
+stable. This means, that the incoherent state cannot be linearly stable \
+without the presence of noise.
+ For D > 0 , the funademental node can be stable, by setting \[Lambda] = 0 in \
+the equation (32) we find the critical point of the incoherent state\
+\>", "Text",
+ CellChangeTimes->{
+  3.80436203169639*^9, {3.804362409703601*^9, 3.8043624322732496`*^9}, {
+   3.8043625438848047`*^9, 3.8043625837900977`*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SubscriptBox["K", "c"], " ", "=", " ", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{
+      RowBox[{"2", " ", "[", " ", 
+       RowBox[{
+        SubsuperscriptBox["\[Integral]", 
+         RowBox[{"-", "\[Infinity]"}], "\[Infinity]"], 
+        RowBox[{
+         FractionBox[
+          RowBox[{" ", "D", "  "}], 
+          RowBox[{" ", 
+           RowBox[{
+            SuperscriptBox["D", "2"], " ", "+", "  ", 
+            SuperscriptBox[
+             RowBox[{"v", " "}], "2"]}]}]], 
+         RowBox[{"g", "(", "v", ")"}], " ", 
+         RowBox[{"\[DifferentialD]", "v"}]}]}], " ", "]"}], " "}], 
+     RowBox[{"-", "1"}]], "              ", 
+    RowBox[{"(", "33", ")"}], " "}]}], TraditionalForm]], "Input",
+ CellChangeTimes->{{3.8043625989446106`*^9, 3.8043626089727583`*^9}, {
+  3.8043626645481496`*^9, 3.8043626772372203`*^9}, {3.804362709050151*^9, 
+  3.804362741839486*^9}, {3.804364583094954*^9, 3.8043645836564517`*^9}, {
+  3.8043682305989733`*^9, 3.8043682359297295`*^9}, {3.8043689389274435`*^9, 
+  3.804368941013864*^9}}],
+
+Cell["\<\
+
+For som distributions of natural frequencies g(\[Omega]), the eigenvalue can \
+be found. For example, a uniform distribution given by 
+\
+\>", "Text",
+ CellChangeTimes->{{3.8043627714413195`*^9, 3.804362818774789*^9}, {
+   3.8043628712344723`*^9, 3.804362881453146*^9}, {3.8043629257706413`*^9, 
+   3.8043629632494226`*^9}, 3.804368226956681*^9}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TagBox[GridBox[{
+      {"\[Piecewise]", GridBox[{
+         {
+          RowBox[{
+           RowBox[{"g", 
+            RowBox[{"(", "\[Omega]", ")"}]}], "=", 
+           FractionBox[
+            RowBox[{"1", "  "}], 
+            RowBox[{"2", "\[DoubledGamma]"}]], "        "}], 
+          RowBox[{
+           RowBox[{"-", "\[DoubledGamma]"}], " ", "\[LessEqual]", " ", 
+           "\[Omega]", " ", "\[LessEqual]", " ", "\[DoubledGamma]"}]},
+         {"0", "else"}
+        },
+        AllowedDimensions->{2, Automatic},
+        Editable->True,
+        GridBoxAlignment->{
+         "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, 
+          "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+        GridBoxItemSize->{
+         "Columns" -> {{Automatic}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}},
+           "RowsIndexed" -> {}},
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.27999999999999997`], {
+             Offset[0.84]}, 
+            Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+            Offset[0.2], {
+             Offset[0.4]}, 
+            Offset[0.2]}, "RowsIndexed" -> {}},
+        Selectable->True]}
+     },
+     GridBoxAlignment->{
+      "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+       "RowsIndexed" -> {}},
+     GridBoxItemSize->{
+      "Columns" -> {{Automatic}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+       "RowsIndexed" -> {}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.35]}, 
+         Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}, "RowsIndexed" -> {}}],
+    "Piecewise",
+    DeleteWithContents->True,
+    Editable->False,
+    SelectWithContents->True,
+    Selectable->False], "                    ", 
+   RowBox[{"(", "34", ")"}], " "}], TraditionalForm]], "Input",
+ CellChangeTimes->{{3.8043629779211907`*^9, 3.804363032129239*^9}, {
+  3.8043630657015076`*^9, 3.8043631198357105`*^9}, {3.804363435085739*^9, 
+  3.8043634415594683`*^9}, {3.8043645864150777`*^9, 3.804364586950674*^9}, {
+  3.8043682388448915`*^9, 3.804368266184785*^9}, {3.804368944749872*^9, 
+  3.804368947095601*^9}}],
+
+Cell["\<\
+Performing the integral gives the eigenvalue and a critical coupling constant\
+\>", "Text",
+ CellChangeTimes->{{3.8043633677288485`*^9, 3.804363382255005*^9}, {
+  3.804363449945999*^9, 3.8043634571806564`*^9}}],
+
+Cell[BoxData[{
+ FormBox[
+  RowBox[{
+   RowBox[{"\[Lambda]", "=", 
+    RowBox[{
+     RowBox[{"\[Gamma]", " ", "cot", " ", 
+      FractionBox[
+       RowBox[{"2", "\[Gamma]"}], "K"]}], " ", "-", " ", 
+     RowBox[{"D", "                              ", 
+      RowBox[{"(", "35", ")"}]}]}]}], " "}], 
+  TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   SubscriptBox["K", "c"], "=", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"2", "\[Gamma]"}], 
+     RowBox[{"arctan", 
+      FractionBox[
+       RowBox[{"2", "\[Gamma]"}], "K"], " "}]], "                                 ", 
+    RowBox[{"(", "36", ")"}], " "}]}], TraditionalForm]}], "Input",
+ CellChangeTimes->{{3.8043633968270817`*^9, 3.804363541667765*^9}, {
+  3.8043645888885*^9, 3.804364591554333*^9}, {3.8043682695986977`*^9, 
+  3.8043682789855657`*^9}, {3.804368952828271*^9, 3.8043689787170467`*^9}}],
+
+Cell["For a Lorentzian distribution , ", "Text",
+ CellChangeTimes->{{3.8043635545113983`*^9, 3.8043635635652237`*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"g", "(", "\[Omega]", ")"}], "=", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"\[DoubledGamma]", "  "}], 
+     RowBox[{"\[Pi]", "(", " ", 
+      RowBox[{
+       SuperscriptBox["\[DoubledGamma]", "2"], "+", 
+       SuperscriptBox["\[Omega]", "2"]}], ")"}]], "                           ", 
+    RowBox[{"(", "37", ")"}], " "}]}], TraditionalForm]], "Input",
+ CellChangeTimes->{{3.8043635793749104`*^9, 3.804363615026578*^9}, {
+  3.804364593390464*^9, 3.8043645937804227`*^9}, {3.8043682914043474`*^9, 
+  3.8043682963969975`*^9}, {3.804368969546566*^9, 3.804368986271843*^9}}],
+
+Cell["Giving the eigenvalue and the critical coupling constant as", "Text",
+ CellChangeTimes->{{3.8043636369868574`*^9, 3.804363648150009*^9}}],
+
+Cell[BoxData[{
+ FormBox[
+  RowBox[{
+   RowBox[{"\[Lambda]", "=", " ", 
+    RowBox[{
+     FractionBox["K", "2"], " ", "-", " ", "D", " ", "-", " ", 
+     RowBox[{"\[Gamma]", "                                ", 
+      RowBox[{"(", "38", ")"}]}]}]}], " "}], 
+  TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   SubscriptBox["K", "c"], "=", 
+   RowBox[{
+    RowBox[{"2", " ", 
+     RowBox[{"(", " ", 
+      RowBox[{"D", " ", "+", " ", "\[Gamma]"}], " ", ")"}]}], "  ", "=", " ", 
+    RowBox[{
+     SuperscriptBox["\[Beta]", "2"], " ", "+", " ", 
+     RowBox[{"2", " ", "\[DoubledGamma]", "                      ", 
+      RowBox[{"(", "39", ")"}], " "}]}]}]}], TraditionalForm]}], "Input",
+ CellChangeTimes->{{3.8043636849975204`*^9, 3.804363745612393*^9}, {
+  3.8043638589692755`*^9, 3.8043638812427406`*^9}, {3.804364595805009*^9, 
+  3.804364599551956*^9}, {3.8043682984674616`*^9, 3.8043683087769394`*^9}, {
+  3.8043689892000184`*^9, 3.804368999121483*^9}}],
+
+Cell[TextData[StyleBox["\nSecond order perturbation analysis ", \
+"Subchapter"]], "Text",
+ CellChangeTimes->{
+  3.8043642690596824`*^9, {3.804367188769842*^9, 3.804367195022071*^9}, {
+   3.8043676489053893`*^9, 3.8043676524688654`*^9}}],
+
+Cell[TextData[{
+ "In the Strogatz and Mirollo article suggest one problem that remain \
+unfinished, the linear stability analysis to second order to see if a \
+higher-order term will make affect the stability.\nAdding the second term of \
+perturbation [O(",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["\[Epsilon]", "2"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ")]\n"
+}], "Text",
+ CellChangeTimes->{{3.8043642995082674`*^9, 3.804364362300357*^9}, {
+  3.8043644213135552`*^9, 3.8043644595124135`*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"\[Rho]", "(", 
+    RowBox[{"\[Theta]", ",", "t", ",", "\[Omega]"}], ")"}], "  ", "=", 
+   RowBox[{
+    FractionBox["1", 
+     RowBox[{"2", " ", "\[Pi]"}]], " ", "+", "  ", 
+    RowBox[{"\[Epsilon]", " ", 
+     RowBox[{"\[Eta]", "(", 
+      RowBox[{"\[Theta]", ",", "t", ",", "\[Omega]"}], ")"}]}], "    ", "+", 
+    " ", 
+    RowBox[{
+     SuperscriptBox["\[Epsilon]", "2"], " ", 
+     RowBox[{"\[Mu]", "(", 
+      RowBox[{"\[Theta]", ",", "t", ",", "\[Omega]"}], ")"}], "                       ", 
+     RowBox[{"(", "40", ")"}]}]}]}], TraditionalForm]], "Input",
+ CellChangeTimes->{{3.8043644681293697`*^9, 3.8043645288510065`*^9}, {
+   3.804364601924644*^9, 3.8043646033288517`*^9}, 3.8043683156894093`*^9, 
+   3.8043690049968176`*^9}],
+
+Cell["\<\
+
+Imposing the same condition for normalize\
+\>", "Text",
+ CellChangeTimes->{{3.8043645429363394`*^9, 3.8043645586782913`*^9}, 
+   3.8043676394666295`*^9}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubsuperscriptBox["\[Integral]", "0", 
+     RowBox[{"2", " ", "\[Pi]"}]], 
+    RowBox[{
+     RowBox[{"\[Mu]", "(", 
+      RowBox[{"\[Theta]", ",", "t", ",", "\[Omega]"}], ")"}], " ", 
+     RowBox[{"\[DifferentialD]", "\[Theta]"}]}]}], " ", "=", " ", "0"}], 
+  TraditionalForm]], "Input",
+ CellChangeTimes->{3.804364575398533*^9}],
+
+Cell["\<\
+
+Substituting the equation (40) into the Fokker - Planck equation gives \
+\>", "Text",
+ CellChangeTimes->{{3.8043646339105563`*^9, 3.8043646633428564`*^9}, 
+   3.8043676380733566`*^9}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"\[Epsilon]", " ", 
+     FractionBox[
+      RowBox[{" ", 
+       RowBox[{"\[PartialD]", " ", "\[Eta]"}]}], 
+      RowBox[{"\[PartialD]", " ", "t"}]]}], "+", " ", 
+    RowBox[{
+     SuperscriptBox[
+      RowBox[{"\[Epsilon]", " "}], "2"], 
+     FractionBox[
+      RowBox[{" ", 
+       RowBox[{"\[PartialD]", " ", "\[Mu]"}]}], 
+      RowBox[{"\[PartialD]", " ", "t"}]]}]}], "=", " ", 
+   RowBox[{
+    RowBox[{"\[Epsilon]", " ", "D", " ", 
+     FractionBox[
+      RowBox[{" ", 
+       RowBox[{
+        SuperscriptBox["\[PartialD]", "2"], "\[Eta]"}]}], 
+      RowBox[{"\[PartialD]", " ", 
+       SuperscriptBox["\[Theta]", "2"]}]]}], " ", "+", " ", 
+    RowBox[{
+     SuperscriptBox[
+      RowBox[{"\[Epsilon]", " "}], "2"], " ", "D", " ", 
+     FractionBox[
+      RowBox[{" ", 
+       RowBox[{
+        SuperscriptBox["\[PartialD]", "2"], "\[Mu]"}]}], 
+      RowBox[{"\[PartialD]", " ", 
+       SuperscriptBox["\[Theta]", "2"]}]]}], "-", " ", 
+    RowBox[{
+     RowBox[{
+      FractionBox["\[PartialD]", 
+       RowBox[{"\[PartialD]", " ", "\[Theta]"}]], 
+      RowBox[{"[", " ", 
+       RowBox[{
+        RowBox[{"(", " ", 
+         RowBox[{
+          FractionBox["1", 
+           RowBox[{"2", " ", "\[Pi]"}]], " ", "+", " ", 
+          RowBox[{"\[Epsilon]", " ", "\[Eta]"}], " ", "+", 
+          RowBox[{
+           SuperscriptBox["\[Epsilon]", "2"], " ", "\[Mu]"}]}], ")"}], " ", 
+        "v"}], " ", "]"}]}], "                        ", 
+     RowBox[{"(", "41", ")"}]}]}]}], TraditionalForm]], "Input",
+ CellChangeTimes->{{3.804364675875343*^9, 3.8043647536234417`*^9}, {
+  3.804368312756254*^9, 3.8043683141265874`*^9}, {3.804369008462504*^9, 
+  3.804369011840472*^9}}],
+
+Cell["\<\
+
+Inserting the equation (40) to solve r, like in the first order case gives \
+\>", "Text",
+ CellChangeTimes->{{3.804364848357664*^9, 3.804364873190262*^9}, 
+   3.804367636526492*^9}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"r", " ", 
+    SuperscriptBox["\[ExponentialE]", 
+     RowBox[{"i", " ", "\[Psi]"}]]}], "  ", "=", " ", 
+   RowBox[{
+    RowBox[{"\[Epsilon]", 
+     RowBox[{
+      SubsuperscriptBox["\[Integral]", "0", 
+       RowBox[{"2", " ", "\[Pi]"}]], 
+      RowBox[{
+       SubsuperscriptBox["\[Integral]", 
+        RowBox[{"-", "\[Infinity]"}], "\[Infinity]"], 
+       RowBox[{
+        SuperscriptBox["\[ExponentialE]", 
+         RowBox[{"i", " ", "\[Theta]"}]], 
+        RowBox[{"\[Eta]", "(", 
+         RowBox[{"\[Theta]", ",", "t", ",", "\[Omega]"}], ")"}], " ", 
+        RowBox[{"g", "(", "\[Omega]", ")"}], 
+        RowBox[{"\[DifferentialD]", "\[Omega]"}], 
+        RowBox[{"\[DifferentialD]", "\[Theta]"}]}]}]}]}], "    ", "+", "  ", 
+    RowBox[{
+     SuperscriptBox[
+      RowBox[{"\[Epsilon]", " "}], "2"], 
+     RowBox[{
+      SubsuperscriptBox["\[Integral]", "0", 
+       RowBox[{"2", " ", "\[Pi]"}]], 
+      RowBox[{
+       SubsuperscriptBox["\[Integral]", 
+        RowBox[{"-", "\[Infinity]"}], "\[Infinity]"], 
+       RowBox[{
+        SuperscriptBox["\[ExponentialE]", 
+         RowBox[{"i", " ", "\[Theta]"}]], 
+        RowBox[{"\[Mu]", "(", 
+         RowBox[{"\[Theta]", ",", "t", ",", "\[Omega]"}], ")"}], " ", 
+        RowBox[{"g", "(", "\[Omega]", ")"}], 
+        RowBox[{"\[DifferentialD]", "\[Omega]"}], 
+        RowBox[{"\[DifferentialD]", "\[Theta]"}], "                                        ", 
+        RowBox[{"(", "42", ")"}]}]}]}]}]}]}], TraditionalForm]], "Input",
+ CellChangeTimes->{{3.80436490883698*^9, 3.8043649300991187`*^9}, {
+   3.804368318311398*^9, 3.80436832788081*^9}, 3.8043690154957*^9}],
+
+Cell[TextData[{
+ "\nDefining ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["r", "1"], TraditionalForm]],
+  CellChangeTimes->{{3.804365163706444*^9, 3.8043652751434364`*^9}}],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["r", "2"], TraditionalForm]],
+  CellChangeTimes->{{3.804365163706444*^9, 3.8043652751434364`*^9}}],
+ " gives "
+}], "Text",
+ CellChangeTimes->{{3.8043650587789965`*^9, 3.8043650652527313`*^9}, {
+  3.804365210077428*^9, 3.804365229594241*^9}, {3.8043676229188776`*^9, 
+  3.804367634959711*^9}}],
+
+Cell[BoxData[{
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubscriptBox["r", "1"], " ", 
+    SuperscriptBox["\[ExponentialE]", 
+     RowBox[{"i", " ", "\[Psi]"}]]}], "  ", "=", " ", 
+   RowBox[{"\[Epsilon]", 
+    RowBox[{
+     SubsuperscriptBox["\[Integral]", "0", 
+      RowBox[{"2", " ", "\[Pi]"}]], 
+     RowBox[{
+      SubsuperscriptBox["\[Integral]", 
+       RowBox[{"-", "\[Infinity]"}], "\[Infinity]"], 
+      RowBox[{
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{"i", " ", "\[Theta]"}]], 
+       RowBox[{"\[Eta]", "(", 
+        RowBox[{"\[Theta]", ",", "t", ",", "\[Omega]"}], ")"}], " ", 
+       RowBox[{"g", "(", "\[Omega]", ")"}], 
+       RowBox[{"\[DifferentialD]", "\[Omega]"}], 
+       RowBox[{"\[DifferentialD]", "\[Theta]"}], "                                               ", 
+       RowBox[{"(", "43", ")"}]}]}]}]}]}], 
+  TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubscriptBox["r", "2"], " ", 
+    SuperscriptBox["\[ExponentialE]", 
+     RowBox[{"i", " ", "\[Psi]"}]]}], "  ", "=", " ", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"\[Epsilon]", " "}], "2"], 
+    RowBox[{
+     SubsuperscriptBox["\[Integral]", "0", 
+      RowBox[{"2", " ", "\[Pi]"}]], 
+     RowBox[{
+      SubsuperscriptBox["\[Integral]", 
+       RowBox[{"-", "\[Infinity]"}], "\[Infinity]"], 
+      RowBox[{
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{"i", " ", "\[Theta]"}]], 
+       RowBox[{"\[Mu]", "(", 
+        RowBox[{"\[Theta]", ",", "t", ",", "\[Omega]"}], ")"}], " ", 
+       RowBox[{"g", "(", "\[Omega]", ")"}], 
+       RowBox[{"\[DifferentialD]", "\[Omega]"}], 
+       RowBox[{"\[DifferentialD]", "\[Theta]"}], "                                            ", 
+       RowBox[{"(", "44", ")"}]}]}]}]}]}], 
+  TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{"r", " ", "=", " ", 
+   RowBox[{
+    RowBox[{"\[Epsilon]", " ", 
+     SubscriptBox["r", "1"]}], " ", "+", " ", 
+    RowBox[{
+     SuperscriptBox[
+      RowBox[{"\[Epsilon]", " "}], "2"], " ", 
+     SubscriptBox["r", "2"], "                                                              ", 
+     RowBox[{"(", "45", ")"}], 
+     "                                                                        \
+                               "}]}]}], TraditionalForm]}], "Input",
+ CellChangeTimes->{{3.804365163706444*^9, 3.8043652751434364`*^9}, {
+  3.8043683296441355`*^9, 3.8043683364628625`*^9}, {3.8043690189514613`*^9, 
+  3.804369025714373*^9}}],
+
+Cell["\<\
+
+The expression for v gives \
+\>", "Text",
+ CellChangeTimes->{{3.8043652970050244`*^9, 3.804365301385268*^9}, 
+   3.8043676591978807`*^9}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"v", "  ", "=", " ", 
+   RowBox[{
+    SubscriptBox[
+     RowBox[{"\[Omega]", " "}], "i"], " ", "+", " ", 
+    RowBox[{"K", " ", 
+     RowBox[{"(", " ", 
+      RowBox[{
+       RowBox[{"\[Epsilon]", " ", 
+        SubscriptBox["r", "1"]}], " ", "+", " ", 
+       RowBox[{
+        SuperscriptBox[
+         RowBox[{"\[Epsilon]", " "}], "2"], " ", 
+        SubscriptBox["r", "2"]}]}], "  ", ")"}], " ", "sin", " ", 
+     RowBox[{"(", " ", 
+      RowBox[{"\[Psi]", " ", "-", " ", 
+       SubscriptBox["\[Theta]", "i"]}], " ", ")"}], "                                                          ", 
+     RowBox[{"(", "46", ")"}]}]}]}], TraditionalForm]], "Input",
+ CellChangeTimes->{{3.8043653550188494`*^9, 3.804365373221204*^9}, {
+  3.8043683424957304`*^9, 3.8043683449123106`*^9}, {3.804369031199708*^9, 
+  3.804369032270842*^9}}],
+
+Cell[TextData[{
+ "\nSubstituting the expression (46) into the Fokker - Planck equation, and \
+taking only terms up to [O(",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["\[Epsilon]", "2"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ")] gives "
+}], "Text",
+ CellChangeTimes->{{3.804365410032793*^9, 3.8043654511298494`*^9}, 
+   3.804367662947839*^9}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"\[Epsilon]", 
+     FractionBox[
+      RowBox[{" ", 
+       RowBox[{"\[PartialD]", " ", "\[Eta]"}]}], 
+      RowBox[{"\[PartialD]", " ", "t"}]]}], "+", " ", 
+    RowBox[{
+     SuperscriptBox[
+      RowBox[{"\[Epsilon]", " "}], "2"], 
+     FractionBox[
+      RowBox[{" ", 
+       RowBox[{"\[PartialD]", " ", "\[Mu]"}]}], 
+      RowBox[{"\[PartialD]", " ", "t"}]]}]}], "=", "  ", 
+   RowBox[{
+    RowBox[{"\[Epsilon]", " ", "D", " ", 
+     FractionBox[
+      RowBox[{" ", 
+       RowBox[{
+        SuperscriptBox["\[PartialD]", "2"], " ", "\[Eta]"}]}], 
+      RowBox[{"\[PartialD]", " ", 
+       SuperscriptBox["\[Theta]", "2"]}]]}], " ", "-", 
+    RowBox[{"\[Omega]", 
+     FractionBox[
+      RowBox[{"\[PartialD]", "  ", "\[Eta]"}], 
+      RowBox[{"\[PartialD]", " ", "\[Theta]"}]]}], "  ", "+", " ", 
+    RowBox[{
+     FractionBox[
+      RowBox[{"K", " "}], 
+      RowBox[{"2", " ", "\[Pi]"}]], "  ", 
+     SubscriptBox["r", "1"], " ", "cos", " ", 
+     RowBox[{"(", " ", 
+      RowBox[{"\[Psi]", " ", "-", " ", "\[Theta]"}], " ", ")"}]}], "   ", "+",
+     " ", 
+    RowBox[{
+     SuperscriptBox[
+      RowBox[{"\[Epsilon]", " "}], "2"], " ", "D", " ", 
+     FractionBox[
+      RowBox[{" ", 
+       RowBox[{
+        SuperscriptBox["\[PartialD]", "2"], "\[Mu]"}]}], 
+      RowBox[{"\[PartialD]", " ", 
+       SuperscriptBox["\[Theta]", "2"]}]]}], " ", "+", "  ", 
+    RowBox[{
+     SuperscriptBox[
+      RowBox[{"\[Epsilon]", " "}], "2"], " ", 
+     RowBox[{"K", " ", "[", "  ", 
+      RowBox[{
+       FractionBox[
+        SubscriptBox["r", "2"], 
+        RowBox[{"2", " ", "\[Pi]"}]], "  ", "+", " ", 
+       RowBox[{"\[Eta]", " ", 
+        SubscriptBox["r", "1"]}]}], "]"}], "cos", " ", 
+     RowBox[{"(", " ", 
+      RowBox[{"\[Psi]", " ", "-", " ", 
+       SubscriptBox["\[Theta]", "i"]}], " ", ")"}]}], " ", "-", 
+    RowBox[{
+     SuperscriptBox[
+      RowBox[{"\[Epsilon]", " "}], "2"], " ", "K", " ", 
+     SubscriptBox["r", "1"], " ", "sin", " ", 
+     RowBox[{"(", " ", 
+      RowBox[{"\[Psi]", " ", "-", " ", "\[Theta]"}], " ", ")"}], 
+     FractionBox[
+      RowBox[{" ", 
+       RowBox[{"\[PartialD]", " ", "\[Eta]"}]}], 
+      RowBox[{"\[PartialD]", " ", "\[Theta]"}]]}], "-", "  ", 
+    RowBox[{"\[Omega]", 
+     FractionBox[
+      RowBox[{"\[PartialD]", "  ", "\[Mu]"}], 
+      RowBox[{"\[PartialD]", " ", "\[Theta]"}]], "                              ", 
+     RowBox[{"(", "47", ")"}]}]}]}], TraditionalForm]], "Input",
+ CellChangeTimes->{{3.8043655212802663`*^9, 3.8043655706372848`*^9}, {
+  3.804365607534623*^9, 3.8043656406710224`*^9}, {3.804365702081811*^9, 
+  3.804365864826625*^9}, {3.8043683469448323`*^9, 3.80436834761504*^9}, {
+  3.804369035833315*^9, 3.8043690369692774`*^9}}],
+
+Cell[TextData[{
+ "\nThe first order terms are the same as those found in the first analysis, \
+we can substract them out. Dividing the equation by ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox[
+    RowBox[{"\[Epsilon]", " "}], "2"], TraditionalForm]],
+  CellChangeTimes->{{3.8043655212802663`*^9, 3.8043655706372848`*^9}, {
+   3.804365607534623*^9, 3.8043656406710224`*^9}, {3.804365702081811*^9, 
+   3.804365864826625*^9}}],
+ " we obtain the evolution of the second order - perturbation"
+}], "Text",
+ CellChangeTimes->{{3.804365875063283*^9, 3.804365955464264*^9}, 
+   3.804367665049222*^9}],
+
+Cell["", "Text"],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FractionBox[
+    RowBox[{" ", 
+     RowBox[{"\[PartialD]", " ", "\[Mu]"}]}], 
+    RowBox[{"\[PartialD]", " ", "t"}]], "=", "  ", 
+   RowBox[{
+    RowBox[{"D", " ", 
+     FractionBox[
+      RowBox[{" ", 
+       RowBox[{
+        SuperscriptBox["\[PartialD]", "2"], "\[Mu]"}]}], 
+      RowBox[{"\[PartialD]", " ", 
+       SuperscriptBox["\[Theta]", "2"]}]]}], " ", "+", "   ", 
+    RowBox[{
+     RowBox[{"K", " ", "[", "  ", 
+      RowBox[{
+       FractionBox[
+        SubscriptBox["r", "2"], 
+        RowBox[{"2", " ", "\[Pi]"}]], "  ", "+", " ", 
+       RowBox[{"\[Eta]", " ", 
+        SubscriptBox["r", "1"]}]}], "]"}], "cos", " ", 
+     RowBox[{"(", " ", 
+      RowBox[{"\[Psi]", " ", "-", " ", 
+       SubscriptBox["\[Theta]", "i"]}], " ", ")"}]}], " ", "-", " ", 
+    RowBox[{"K", " ", 
+     SubscriptBox["r", "1"], " ", "sin", " ", 
+     RowBox[{"(", " ", 
+      RowBox[{"\[Psi]", " ", "-", " ", "\[Theta]"}], " ", ")"}], 
+     FractionBox[
+      RowBox[{" ", 
+       RowBox[{"\[PartialD]", " ", "\[Eta]"}]}], 
+      RowBox[{"\[PartialD]", " ", "\[Theta]"}]]}], "-", 
+    RowBox[{"\[Omega]", 
+     FractionBox[
+      RowBox[{"\[PartialD]", "  ", "\[Mu]"}], 
+      RowBox[{"\[PartialD]", " ", "\[Theta]"}]], "          ", 
+     RowBox[{"(", "48", ")"}]}]}]}], TraditionalForm]], "Input",
+ CellChangeTimes->{{3.8043659771512733`*^9, 3.8043660012288857`*^9}, {
+  3.8043683507067766`*^9, 3.804368352409229*^9}, {3.804369040092929*^9, 
+  3.804369048503435*^9}}],
+
+Cell["\<\
+
+Again we do fourier methods for analyze the equation\
+\>", "Text",
+ CellChangeTimes->{{3.8043661161130776`*^9, 3.804366129478372*^9}, 
+   3.8043676668565006`*^9}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"\[Mu]", "(", 
+    RowBox[{"\[Theta]", ",", "t", ",", "\[Omega]"}], ")"}], "  ", "=", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"s", "(", 
+      RowBox[{"t", ",", "\[Omega]"}], ")"}], 
+     SuperscriptBox["\[ExponentialE]", 
+      RowBox[{"i", " ", "\[Theta]"}]]}], "+", 
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["s", "*"], "(", 
+      RowBox[{"t", ",", "\[Omega]"}], ")"}], 
+     SuperscriptBox["\[ExponentialE]", 
+      RowBox[{
+       RowBox[{"-", "i"}], " ", "\[Theta]"}]]}], "+", "  ", 
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["\[Mu]", "\[UpTee]"], "(", 
+      RowBox[{"\[Theta]", ",", "t", ",", "\[Omega]"}], ")"}], "                                                              ", 
+     RowBox[{"(", "49", ")"}]}]}]}], TraditionalForm]], "Input",
+ CellChangeTimes->{{3.8043661367299404`*^9, 3.8043661488276267`*^9}, {
+   3.8043662285653744`*^9, 3.8043662295796604`*^9}, {3.8043683538115063`*^9, 
+   3.804368357039839*^9}, 3.8043690512291884`*^9}],
+
+Cell["\<\
+
+By analogy with the first order analysis\
+\>", "Text",
+ CellChangeTimes->{{3.8043661622377377`*^9, 3.804366176829717*^9}, 
+   3.8043676694374886`*^9}],
+
+Cell[BoxData[{
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubscriptBox["r", "1"], "  ", " ", 
+    SuperscriptBox["\[ExponentialE]", 
+     RowBox[{"i", " ", "\[Psi]"}]]}], "  ", "=", 
+   RowBox[{"2", " ", "\[Pi]", 
+    RowBox[{
+     SubsuperscriptBox["\[Integral]", 
+      RowBox[{"-", "\[Infinity]"}], "\[Infinity]"], 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox["c", "*"], "(", 
+       RowBox[{"t", ",", "\[Omega]"}], ")"}], " ", 
+      RowBox[{"g", "(", "\[Omega]", ")"}], 
+      RowBox[{"\[DifferentialD]", "\[Omega]"}], "                              ", 
+      RowBox[{"(", "50", ")"}]}]}]}]}], 
+  TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubscriptBox["r", "2"], "  ", " ", 
+    SuperscriptBox["\[ExponentialE]", 
+     RowBox[{"i", " ", "\[Psi]"}]]}], "  ", "=", 
+   RowBox[{"2", " ", "\[Pi]", 
+    RowBox[{
+     SubsuperscriptBox["\[Integral]", 
+      RowBox[{"-", "\[Infinity]"}], "\[Infinity]"], 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox["s", "*"], "(", 
+       RowBox[{"t", ",", "\[Omega]"}], ")"}], " ", 
+      RowBox[{"g", "(", "\[Omega]", ")"}], 
+      RowBox[{"\[DifferentialD]", "\[Omega]"}], "                              ", 
+      RowBox[{"(", "51", ")"}]}]}]}]}], TraditionalForm]}], "Input",
+ CellChangeTimes->{{3.8043662110741777`*^9, 3.804366236488187*^9}, {
+  3.8043683588340826`*^9, 3.8043683678808875`*^9}, {3.804369054239101*^9, 
+  3.8043690644188786`*^9}}],
+
+Cell["\<\
+
+With the same logic used later, we can compute the terms of the evolution \
+equation\
+\>", "Text",
+ CellChangeTimes->{{3.8043662529401994`*^9, 3.8043662745874395`*^9}, 
+   3.804367671570904*^9}],
+
+Cell[BoxData[{
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubscriptBox["r", "2"], "  ", 
+    RowBox[{"cos", "(", 
+     RowBox[{"\[Psi]", "-", "\[Theta]"}], ")"}]}], "  ", "=", " ", 
+   RowBox[{
+    RowBox[{"\[Pi]", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         SubsuperscriptBox["\[Integral]", 
+          RowBox[{"-", "\[Infinity]"}], "\[Infinity]"], 
+         RowBox[{
+          RowBox[{
+           SuperscriptBox["s", "*"], "(", 
+           RowBox[{"t", ",", "\[Omega]"}], ")"}], " ", 
+          RowBox[{"g", "(", "\[Omega]", ")"}], 
+          RowBox[{"\[DifferentialD]", "\[Omega]"}]}]}], " ", ")"}], 
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{
+         RowBox[{"-", "i"}], " ", "\[Theta]"}]]}], "+", " ", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         SubsuperscriptBox["\[Integral]", 
+          RowBox[{"-", "\[Infinity]"}], "\[Infinity]"], 
+         RowBox[{
+          RowBox[{"s", "(", 
+           RowBox[{"t", ",", "\[Omega]"}], ")"}], " ", 
+          RowBox[{"g", "(", "\[Omega]", ")"}], 
+          RowBox[{"\[DifferentialD]", "\[Omega]"}]}]}], ")"}], 
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{"i", " ", "\[Theta]"}]]}]}], "]"}], "                                ", 
+    RowBox[{"(", "52", ")"}]}]}], TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   RowBox[{"\[Eta]", " ", 
+    SubscriptBox["r", "1"], "  ", 
+    RowBox[{"cos", "(", 
+     RowBox[{"\[Psi]", "-", "\[Theta]"}], ")"}]}], "  ", "=", " ", 
+   RowBox[{
+    RowBox[{"\[Pi]", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         SubsuperscriptBox["\[Integral]", 
+          RowBox[{"-", "\[Infinity]"}], "\[Infinity]"], 
+         RowBox[{
+          RowBox[{
+           SuperscriptBox["c", "*"], "(", 
+           RowBox[{"t", ",", "\[Omega]"}], ")"}], " ", 
+          RowBox[{"g", "(", "\[Omega]", ")"}], 
+          RowBox[{"\[DifferentialD]", "\[Omega]"}]}]}], " ", ")"}], 
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{
+         RowBox[{"-", "i"}], " ", "\[Theta]"}]]}], "+", " ", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         SubsuperscriptBox["\[Integral]", 
+          RowBox[{"-", "\[Infinity]"}], "\[Infinity]"], 
+         RowBox[{
+          RowBox[{"c", "(", 
+           RowBox[{"t", ",", "\[Omega]"}], ")"}], " ", 
+          RowBox[{"g", "(", "\[Omega]", ")"}], 
+          RowBox[{"\[DifferentialD]", "\[Omega]"}]}]}], ")"}], 
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{"i", " ", "\[Theta]"}]]}]}], "]"}], "                                                               ", 
+    RowBox[{"(", "53", ")"}]}]}], TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubscriptBox["r", "1"], "  ", 
+    RowBox[{"sin", "(", 
+     RowBox[{"\[Psi]", "-", "\[Theta]"}], ")"}]}], "  ", "=", " ", 
+   RowBox[{
+    RowBox[{"-", "i"}], " ", 
+    RowBox[{"\[Pi]", " ", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         SubsuperscriptBox["\[Integral]", 
+          RowBox[{"-", "\[Infinity]"}], "\[Infinity]"], 
+         RowBox[{
+          RowBox[{
+           SuperscriptBox["c", "*"], "(", 
+           RowBox[{"t", ",", "\[Omega]"}], ")"}], " ", 
+          RowBox[{"g", "(", "\[Omega]", ")"}], 
+          RowBox[{"\[DifferentialD]", "\[Omega]"}]}]}], " ", ")"}], 
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{
+         RowBox[{"-", "i"}], " ", "\[Theta]"}]]}], "+", " ", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         SubsuperscriptBox["\[Integral]", 
+          RowBox[{"-", "\[Infinity]"}], "\[Infinity]"], 
+         RowBox[{
+          RowBox[{"c", "(", 
+           RowBox[{"t", ",", "\[Omega]"}], ")"}], " ", 
+          RowBox[{"g", "(", "\[Omega]", ")"}], 
+          RowBox[{"\[DifferentialD]", "\[Omega]"}]}]}], ")"}], 
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{"i", " ", "\[Theta]"}]]}]}], "]"}], "                                                         ", 
+    RowBox[{"(", "54", ")"}]}]}], TraditionalForm]}], "Input",
+ CellChangeTimes->{{3.804366319099287*^9, 3.8043663945754623`*^9}, {
+  3.804366838419626*^9, 3.8043668447656555`*^9}, {3.804368369794773*^9, 
+  3.804368381158347*^9}, {3.804369067987337*^9, 3.80436907296303*^9}}],
+
+Cell["\<\
+
+
+Substituting this equations in the evoution equation equation gives 
+\
+\>", "Text",
+ CellChangeTimes->{{3.80436642267832*^9, 3.8043664354721084`*^9}, 
+   3.8043676737828703`*^9, {3.804369163923899*^9, 3.804369191440324*^9}}],
+
+Cell[BoxData[{
+ FormBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"i", " ", "\[Theta]"}]], " ", "[", 
+      RowBox[{
+       FractionBox[
+        RowBox[{" ", 
+         RowBox[{"\[PartialD]", " ", "s", " "}]}], 
+        RowBox[{"\[PartialD]", " ", "t"}]], "+", 
+       RowBox[{"D", " ", "s"}], " ", "+", " ", 
+       RowBox[{"i", " ", "\[Omega]", " ", "s"}], "-", 
+       RowBox[{
+        FractionBox[
+         RowBox[{"K", " "}], 
+         RowBox[{"2", " "}]], " ", 
+        RowBox[{
+         SubsuperscriptBox["\[Integral]", 
+          RowBox[{"-", "\[Infinity]"}], "\[Infinity]"], 
+         RowBox[{"s", " ", 
+          RowBox[{"g", "(", "v", ")"}], 
+          RowBox[{"\[DifferentialD]", "v"}]}]}]}], "-", 
+       RowBox[{"\[Pi]", " ", "K", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          SuperscriptBox["\[Eta]", "\[UpTee]"], "-", 
+          RowBox[{"i", " ", 
+           FractionBox[
+            RowBox[{" ", 
+             RowBox[{"\[PartialD]", " ", 
+              SuperscriptBox["\[Eta]", "\[UpTee]"], " "}]}], 
+            RowBox[{"\[PartialD]", " ", "t"}]]}]}], ")"}], " ", 
+        RowBox[{
+         SubsuperscriptBox["\[Integral]", 
+          RowBox[{"-", "\[Infinity]"}], "\[Infinity]"], 
+         RowBox[{"c", " ", 
+          RowBox[{"g", "(", "v", ")"}], 
+          RowBox[{"\[DifferentialD]", "v"}]}]}]}]}], " ", "]"}], "+", 
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{
+        RowBox[{"-", " ", "i"}], " ", "\[Theta]"}]], " ", "[", 
+      RowBox[{
+       FractionBox[
+        RowBox[{" ", 
+         RowBox[{"\[PartialD]", " ", 
+          SuperscriptBox["s", "*"], " "}]}], 
+        RowBox[{"\[PartialD]", " ", "t"}]], "+", 
+       RowBox[{"D", " ", 
+        SuperscriptBox["s", "*"]}], "-", 
+       RowBox[{"i", " ", "\[Omega]", " ", 
+        SuperscriptBox["s", "*"]}], "-", 
+       RowBox[{
+        FractionBox[
+         RowBox[{"K", " "}], 
+         RowBox[{"2", " "}]], " ", 
+        RowBox[{
+         SubsuperscriptBox["\[Integral]", 
+          RowBox[{"-", "\[Infinity]"}], "\[Infinity]"], 
+         RowBox[{
+          SuperscriptBox["s", "*"], " ", 
+          RowBox[{"g", "(", "v", ")"}], 
+          RowBox[{"\[DifferentialD]", "v"}]}]}]}], "-", 
+       RowBox[{"\[Pi]", " ", "K", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          SuperscriptBox["\[Eta]", "\[UpTee]"], "-", 
+          RowBox[{"i", " ", 
+           FractionBox[
+            RowBox[{" ", 
+             RowBox[{"\[PartialD]", " ", 
+              SuperscriptBox["\[Eta]", "\[UpTee]"], " "}]}], 
+            RowBox[{"\[PartialD]", " ", "t"}]]}]}], ")"}], " ", 
+        RowBox[{
+         SubsuperscriptBox["\[Integral]", 
+          RowBox[{"-", "\[Infinity]"}], "\[Infinity]"], 
+         RowBox[{
+          SuperscriptBox["c", "*"], " ", 
+          RowBox[{"g", "(", "v", ")"}], 
+          RowBox[{"\[DifferentialD]", "v"}]}]}]}]}], " ", "]"}], "+", 
+     RowBox[{"(", " ", 
+      RowBox[{
+       FractionBox[
+        RowBox[{" ", 
+         RowBox[{"\[PartialD]", " ", 
+          SuperscriptBox["\[Mu]", "\[UpTee]"]}]}], 
+        RowBox[{"\[PartialD]", " ", "t"}]], "-", " ", 
+       RowBox[{"D", " ", 
+        FractionBox[
+         RowBox[{" ", 
+          RowBox[{
+           SuperscriptBox["\[PartialD]", "2"], " ", 
+           SuperscriptBox["\[Mu]", "\[UpTee]"]}]}], 
+         RowBox[{"\[PartialD]", " ", 
+          SuperscriptBox["\[Theta]", "2"]}]]}], "+", " ", 
+       RowBox[{"\[Omega]", 
+        FractionBox[
+         RowBox[{"\[PartialD]", "  ", 
+          SuperscriptBox["\[Mu]", "\[UpTee]"]}], 
+         RowBox[{"\[PartialD]", " ", "\[Theta]"}]]}]}], ")"}], " ", "-", " ", 
+     RowBox[{"2", " ", "\[Pi]", " ", "K", " ", 
+      RowBox[{
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{"2", " ", "i", " ", "\[Theta]"}]], " ", "[", " ", 
+       RowBox[{"c", " ", 
+        RowBox[{
+         SubsuperscriptBox["\[Integral]", 
+          RowBox[{"-", "\[Infinity]"}], "\[Infinity]"], 
+         RowBox[{"c", " ", 
+          RowBox[{"g", "(", "v", ")"}], 
+          RowBox[{"\[DifferentialD]", "v"}]}]}]}], "]"}]}], " ", "-", " ", 
+     RowBox[{"2", " ", "\[Pi]", " ", "K", " ", 
+      RowBox[{
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{
+         RowBox[{"-", "2"}], " ", "i", " ", "\[Theta]"}]], " ", "[", " ", 
+       RowBox[{"c", " ", 
+        RowBox[{
+         SubsuperscriptBox["\[Integral]", 
+          RowBox[{"-", "\[Infinity]"}], "\[Infinity]"], 
+         RowBox[{
+          SuperscriptBox["c", "*"], " ", 
+          RowBox[{"g", "(", "v", ")"}], 
+          RowBox[{"\[DifferentialD]", "v"}]}]}]}], "]"}]}]}], "=", "0"}], 
+   "  "}], TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{"(", "55", ")"}], TraditionalForm]}], "Input",
+ CellChangeTimes->{{3.804366459081972*^9, 3.8043666639332*^9}, {
+  3.804366737025751*^9, 3.8043668503477592`*^9}, {3.8043683864501944`*^9, 
+  3.8043684678016605`*^9}}],
+
+Cell[TextData[{
+ "\nAll the brackets must be 0, the terms ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["\[ExponentialE]", 
+    RowBox[{
+     RowBox[{"\[PlusMinus]", "2"}], " ", "i", " ", "\[Theta]"}]], 
+   TraditionalForm]],
+  CellChangeTimes->{{3.804366459081972*^9, 3.8043666639332*^9}, {
+   3.804366737025751*^9, 3.8043668503477592`*^9}}],
+ " terms force that ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["c", "*"], TraditionalForm]],
+  CellChangeTimes->{{3.804366459081972*^9, 3.8043666639332*^9}, {
+   3.804366737025751*^9, 3.8043668503477592`*^9}}],
+ " and c are 0, giving r1 equal to 0. So in the second order analysis, the \
+first perturbation has no effect on the order paramter r in the second order \
+analysis. Like the last analysis, we give two equations"
+}], "Text",
+ CellChangeTimes->{{3.8043669113227167`*^9, 3.8043670718723774`*^9}, 
+   3.8043676781033134`*^9}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FractionBox[
+    RowBox[{" ", 
+     RowBox[{"\[PartialD]", " ", "s", " "}]}], 
+    RowBox[{"\[PartialD]", " ", "t"}]], "=", 
+   RowBox[{
+    RowBox[{"-", 
+     RowBox[{"(", " ", 
+      RowBox[{"D", " ", "+", " ", 
+       RowBox[{"i", " ", "\[Omega]"}]}], " ", ")"}]}], "+", 
+    RowBox[{
+     FractionBox[
+      RowBox[{"K", " "}], 
+      RowBox[{"2", " "}]], " ", 
+     RowBox[{
+      SubsuperscriptBox["\[Integral]", 
+       RowBox[{"-", "\[Infinity]"}], "\[Infinity]"], 
+      RowBox[{"s", " ", 
+       RowBox[{"g", "(", "v", ")"}], 
+       RowBox[{"\[DifferentialD]", "v"}], "                     ", 
+       RowBox[{"(", "56", ")"}], 
+       "                                 "}]}]}]}]}], 
+  TraditionalForm]], "Input",
+ CellChangeTimes->{{3.8043670969453278`*^9, 3.8043670999423127`*^9}, {
+  3.8043684764904275`*^9, 3.8043684878231688`*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FractionBox[
+    RowBox[{" ", 
+     RowBox[{"\[PartialD]", " ", 
+      SuperscriptBox["\[Mu]", "\[UpTee]"]}]}], 
+    RowBox[{"\[PartialD]", " ", "t"}]], "=", "  ", 
+   RowBox[{
+    RowBox[{"D", " ", 
+     FractionBox[
+      RowBox[{" ", 
+       RowBox[{
+        SuperscriptBox["\[PartialD]", "2"], " ", 
+        SuperscriptBox["\[Mu]", "\[UpTee]"]}]}], 
+      RowBox[{"\[PartialD]", " ", 
+       SuperscriptBox["\[Theta]", "2"]}]]}], " ", "-", " ", 
+    RowBox[{"\[Omega]", 
+     FractionBox[
+      RowBox[{"\[PartialD]", "  ", 
+       SuperscriptBox["\[Mu]", "\[UpTee]"]}], 
+      RowBox[{"\[PartialD]", " ", "\[Theta]"}]], "                                      ", 
+     RowBox[{"(", "57", ")"}]}]}]}], TraditionalForm]], "Input",
+ CellChangeTimes->{{3.8043671113827243`*^9, 3.8043671147207975`*^9}, {
+  3.8043684793108883`*^9, 3.8043684854734087`*^9}, {3.804369078681744*^9, 
+  3.804369078925128*^9}}],
+
+Cell["\<\
+
+This shows that these are equivalent tot the evolution equations for the \
+first order perturbation. \
+\>", "Text",
+ CellChangeTimes->{{3.8043671308885665`*^9, 3.8043671641167154`*^9}, 
+   3.8043676822901196`*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+ScreenStyleEnvironment->"Presentation",
+WindowSize->{1280, 637},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+PrintingCopies->1,
+PrintingPageRange->{32000, 32000},
+PrintingOptions->{"Magnification"->1.,
+"PaperOrientation"->"Portrait",
+"PaperSize"->{594.9599999999999, 842.04}},
+FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (July 1, 2014)",
+StyleDefinitions->FrontEnd`FileName[{"Report"}, "StandardReport.nb", 
+  CharacterEncoding -> "WindowsANSI"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 141, 1, 271, "Title"],
+Cell[724, 25, 114, 1, 69, "Author"],
+Cell[CellGroupData[{
+Cell[863, 30, 307, 6, 92, "Chapter"],
+Cell[1173, 38, 189, 2, 47, "Text"],
+Cell[1365, 42, 1062, 22, 54, "Input"],
+Cell[2430, 66, 153, 5, 79, "Text"],
+Cell[2586, 73, 774, 19, 54, "Input"],
+Cell[3363, 94, 163, 5, 79, "Text"],
+Cell[3529, 101, 861, 25, 94, "Input"],
+Cell[4393, 128, 585, 11, 175, "Text"],
+Cell[4981, 141, 1180, 27, 98, "Input"],
+Cell[6164, 170, 653, 15, 79, "Text"],
+Cell[6820, 187, 426, 10, 93, "Input"],
+Cell[7249, 199, 310, 4, 47, "Text"],
+Cell[7562, 205, 1136, 25, 87, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8735, 235, 201, 3, 107, "Subtitle"],
+Cell[8939, 240, 270, 7, 79, "Text"],
+Cell[9212, 249, 809, 17, 93, "Input"],
+Cell[10024, 268, 539, 14, 79, "Text"],
+Cell[10566, 284, 400, 11, 87, "Input"],
+Cell[10969, 297, 311, 6, 111, "Text"],
+Cell[11283, 305, 1489, 37, 98, "Input"],
+Cell[12775, 344, 260, 6, 79, "Text"],
+Cell[13038, 352, 1263, 28, 93, "Input"],
+Cell[14304, 382, 491, 11, 82, "Text"],
+Cell[14798, 395, 1173, 26, 87, "Input"],
+Cell[15974, 423, 179, 5, 79, "Text"],
+Cell[16156, 430, 500, 9, 54, "Input"],
+Cell[16659, 441, 200, 5, 79, "Text"],
+Cell[16862, 448, 809, 17, 54, "Input"],
+Cell[17674, 467, 214, 5, 79, "Text"],
+Cell[17891, 474, 1103, 27, 94, "Input"],
+Cell[18997, 503, 214, 5, 79, "Text"],
+Cell[19214, 510, 1069, 26, 94, "Input"],
+Cell[20286, 538, 236, 5, 79, "Text"],
+Cell[20525, 545, 808, 18, 94, "Input"],
+Cell[21336, 565, 368, 9, 143, "Text"],
+Cell[21707, 576, 1260, 32, 98, "Input"],
+Cell[22970, 610, 268, 7, 111, "Text"],
+Cell[23241, 619, 1012, 25, 56, "Input"],
+Cell[24256, 646, 841, 17, 175, "Text"],
+Cell[25100, 665, 3656, 103, 336, "Input"],
+Cell[28759, 770, 733, 19, 85, "Input"],
+Cell[29495, 791, 460, 8, 111, "Text"],
+Cell[29958, 801, 1636, 40, 85, "Input"],
+Cell[31597, 843, 183, 5, 79, "Text"],
+Cell[31783, 850, 4104, 112, 256, "Input"],
+Cell[35890, 964, 293, 7, 111, "Text"],
+Cell[36186, 973, 2826, 78, 181, "Input"],
+Cell[39015, 1053, 323, 7, 111, "Text"],
+Cell[39341, 1062, 923, 26, 94, "Input"],
+Cell[40267, 1090, 1016, 26, 98, "Input"],
+Cell[41286, 1118, 490, 10, 143, "Text"],
+Cell[41779, 1130, 519, 12, 56, "Input"],
+Cell[42301, 1144, 302, 6, 111, "Text"],
+Cell[42606, 1152, 1088, 28, 93, "Input"],
+Cell[43697, 1182, 202, 5, 79, "Text"],
+Cell[43902, 1189, 763, 20, 56, "Input"],
+Cell[44668, 1211, 477, 11, 82, "Text"],
+Cell[45148, 1224, 1091, 28, 93, "Input"],
+Cell[46242, 1254, 212, 5, 79, "Text"],
+Cell[46457, 1261, 692, 17, 93, "Input"],
+Cell[47152, 1280, 201, 5, 79, "Text"],
+Cell[47356, 1287, 579, 13, 93, "Input"],
+Cell[47938, 1302, 233, 5, 79, "Text"],
+Cell[48174, 1309, 841, 21, 93, "Input"],
+Cell[49018, 1332, 220, 5, 79, "Text"],
+Cell[49241, 1339, 790, 19, 94, "Input"],
+Cell[50034, 1360, 242, 6, 79, "Text"],
+Cell[50279, 1368, 1030, 27, 97, "Input"],
+Cell[51312, 1397, 158, 3, 47, "Text"],
+Cell[51473, 1402, 926, 26, 97, "Input"],
+Cell[52402, 1430, 354, 7, 106, "Text"],
+Cell[52759, 1439, 1013, 16, 303, "Text"],
+Cell[53775, 1457, 1069, 27, 95, "Input"],
+Cell[54847, 1486, 356, 8, 143, "Text"],
+Cell[55206, 1496, 2257, 57, 103, "Input"],
+Cell[57466, 1555, 220, 4, 47, "Text"],
+Cell[57689, 1561, 870, 23, 191, "Input"],
+Cell[58562, 1586, 118, 1, 47, "Text"],
+Cell[58683, 1589, 618, 14, 93, "Input"],
+Cell[59304, 1605, 143, 1, 47, "Text"],
+Cell[59450, 1608, 971, 23, 128, "Input"],
+Cell[60424, 1633, 236, 4, 124, "Text"],
+Cell[60663, 1639, 515, 12, 146, "Text"],
+Cell[61181, 1653, 784, 19, 93, "Input"],
+Cell[61968, 1674, 164, 5, 79, "Text"],
+Cell[62135, 1681, 380, 11, 87, "Input"],
+Cell[62518, 1694, 194, 5, 79, "Text"],
+Cell[62715, 1701, 1728, 50, 98, "Input"],
+Cell[64446, 1753, 192, 5, 79, "Text"],
+Cell[64641, 1760, 1667, 41, 159, "Input"],
+Cell[66311, 1803, 518, 15, 79, "Text"],
+Cell[66832, 1820, 2465, 63, 196, "Input"],
+Cell[69300, 1885, 148, 5, 79, "Text"],
+Cell[69451, 1892, 857, 21, 54, "Input"],
+Cell[70311, 1915, 359, 10, 114, "Text"],
+Cell[70673, 1927, 2762, 76, 178, "Input"],
+Cell[73438, 2005, 593, 13, 114, "Text"],
+Cell[74034, 2020, 16, 0, 47, "Text"],
+Cell[74053, 2022, 1498, 41, 98, "Input"],
+Cell[75554, 2065, 173, 5, 79, "Text"],
+Cell[75730, 2072, 1016, 25, 56, "Input"],
+Cell[76749, 2099, 161, 5, 79, "Text"],
+Cell[76913, 2106, 1430, 38, 154, "Input"],
+Cell[78346, 2146, 205, 6, 79, "Text"],
+Cell[78554, 2154, 4268, 112, 291, "Input"],
+Cell[82825, 2268, 236, 7, 143, "Text"],
+Cell[83064, 2277, 4940, 132, 298, "Input"],
+Cell[88007, 2411, 882, 21, 146, "Text"],
+Cell[88892, 2434, 884, 26, 94, "Input"],
+Cell[89779, 2462, 942, 25, 98, "Input"],
+Cell[90724, 2489, 224, 6, 79, "Text"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
